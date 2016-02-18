@@ -221,12 +221,21 @@ namespace vk
       : Offset2D( 0, 0 )
     {}
 
+    Offset2D(const VkOffset2D& other ) 
+      : m_offset2D(other) 
+    {}
+
     Offset2D( int32_t x, int32_t y)
     {
       m_offset2D.x = x;
       m_offset2D.y = y;
     }
 
+    Offset2D& operator=(const VkOffset2D& arg)
+    {
+        m_offset2D = arg ; 
+        return *this;
+    }
     const int32_t& x() const
     {
       return m_offset2D.x;
@@ -265,6 +274,10 @@ namespace vk
       : Offset3D( 0, 0, 0 )
     {}
 
+    Offset3D(const VkOffset3D& other ) 
+      : m_offset3D(other) 
+    {}
+
     Offset3D( int32_t x, int32_t y, int32_t z)
     {
       m_offset3D.x = x;
@@ -272,6 +285,11 @@ namespace vk
       m_offset3D.z = z;
     }
 
+    Offset3D& operator=(const VkOffset3D& arg)
+    {
+        m_offset3D = arg ; 
+        return *this;
+    }
     const int32_t& x() const
     {
       return m_offset3D.x;
@@ -321,12 +339,21 @@ namespace vk
       : Extent2D( 0, 0 )
     {}
 
+    Extent2D(const VkExtent2D& other ) 
+      : m_extent2D(other) 
+    {}
+
     Extent2D( uint32_t width, uint32_t height)
     {
       m_extent2D.width = width;
       m_extent2D.height = height;
     }
 
+    Extent2D& operator=(const VkExtent2D& arg)
+    {
+        m_extent2D = arg ; 
+        return *this;
+    }
     const uint32_t& width() const
     {
       return m_extent2D.width;
@@ -365,6 +392,10 @@ namespace vk
       : Extent3D( 0, 0, 0 )
     {}
 
+    Extent3D(const VkExtent3D& other ) 
+      : m_extent3D(other) 
+    {}
+
     Extent3D( uint32_t width, uint32_t height, uint32_t depth)
     {
       m_extent3D.width = width;
@@ -372,6 +403,11 @@ namespace vk
       m_extent3D.depth = depth;
     }
 
+    Extent3D& operator=(const VkExtent3D& arg)
+    {
+        m_extent3D = arg ; 
+        return *this;
+    }
     const uint32_t& width() const
     {
       return m_extent3D.width;
@@ -421,6 +457,10 @@ namespace vk
       : Viewport( 0, 0, 0, 0, 0, 0 )
     {}
 
+    Viewport(const VkViewport& other ) 
+      : m_viewport(other) 
+    {}
+
     Viewport( float x, float y, float width, float height, float minDepth, float maxDepth)
     {
       m_viewport.x = x;
@@ -431,6 +471,11 @@ namespace vk
       m_viewport.maxDepth = maxDepth;
     }
 
+    Viewport& operator=(const VkViewport& arg)
+    {
+        m_viewport = arg ; 
+        return *this;
+    }
     const float& x() const
     {
       return m_viewport.x;
@@ -513,12 +558,21 @@ namespace vk
       : Rect2D( Offset2D(), Extent2D() )
     {}
 
+    Rect2D(const VkRect2D& other ) 
+      : m_rect2D(other) 
+    {}
+
     Rect2D( Offset2D offset, Extent2D extent)
     {
       m_rect2D.offset = static_cast<VkOffset2D>( offset );
       m_rect2D.extent = static_cast<VkExtent2D>( extent );
     }
 
+    Rect2D& operator=(const VkRect2D& arg)
+    {
+        m_rect2D = arg ; 
+        return *this;
+    }
     const Offset2D& offset() const
     {
       return reinterpret_cast<const Offset2D&>( m_rect2D.offset );
@@ -557,6 +611,10 @@ namespace vk
       : ClearRect( Rect2D(), 0, 0 )
     {}
 
+    ClearRect(const VkClearRect& other ) 
+      : m_clearRect(other) 
+    {}
+
     ClearRect( Rect2D rect, uint32_t baseArrayLayer, uint32_t layerCount)
     {
       m_clearRect.rect = static_cast<VkRect2D>( rect );
@@ -564,6 +622,11 @@ namespace vk
       m_clearRect.layerCount = layerCount;
     }
 
+    ClearRect& operator=(const VkClearRect& arg)
+    {
+        m_clearRect = arg ; 
+        return *this;
+    }
     const Rect2D& rect() const
     {
       return reinterpret_cast<const Rect2D&>( m_clearRect.rect );
@@ -663,6 +726,10 @@ namespace vk
   class AllocationCallbacks
   {
   public:
+    AllocationCallbacks(const VkAllocationCallbacks& other ) 
+      : m_allocationCallbacks(other) 
+    {}
+
     AllocationCallbacks( void* pUserData, PFN_vkAllocationFunction pfnAllocation, PFN_vkReallocationFunction pfnReallocation, PFN_vkFreeFunction pfnFree, PFN_vkInternalAllocationNotification pfnInternalAllocation, PFN_vkInternalFreeNotification pfnInternalFree)
     {
       m_allocationCallbacks.pUserData = pUserData;
@@ -673,6 +740,11 @@ namespace vk
       m_allocationCallbacks.pfnInternalFree = pfnInternalFree;
     }
 
+    AllocationCallbacks& operator=(const VkAllocationCallbacks& arg)
+    {
+        m_allocationCallbacks = arg ; 
+        return *this;
+    }
     const void* pUserData() const
     {
       return reinterpret_cast<void*>( m_allocationCallbacks.pUserData );
@@ -782,6 +854,10 @@ namespace vk
       : DescriptorBufferInfo( Buffer(), 0, 0 )
     {}
 
+    DescriptorBufferInfo(const VkDescriptorBufferInfo& other ) 
+      : m_descriptorBufferInfo(other) 
+    {}
+
     DescriptorBufferInfo( Buffer buffer, DeviceSize offset, DeviceSize range)
     {
       m_descriptorBufferInfo.buffer = buffer;
@@ -789,6 +865,11 @@ namespace vk
       m_descriptorBufferInfo.range = range;
     }
 
+    DescriptorBufferInfo& operator=(const VkDescriptorBufferInfo& arg)
+    {
+        m_descriptorBufferInfo = arg ; 
+        return *this;
+    }
     const Buffer& buffer() const
     {
       return m_descriptorBufferInfo.buffer;
@@ -838,6 +919,10 @@ namespace vk
       : SubresourceLayout( 0, 0, 0, 0, 0 )
     {}
 
+    SubresourceLayout(const VkSubresourceLayout& other ) 
+      : m_subresourceLayout(other) 
+    {}
+
     SubresourceLayout( DeviceSize offset, DeviceSize size, DeviceSize rowPitch, DeviceSize arrayPitch, DeviceSize depthPitch)
     {
       m_subresourceLayout.offset = offset;
@@ -847,6 +932,11 @@ namespace vk
       m_subresourceLayout.depthPitch = depthPitch;
     }
 
+    SubresourceLayout& operator=(const VkSubresourceLayout& arg)
+    {
+        m_subresourceLayout = arg ; 
+        return *this;
+    }
     const DeviceSize& offset() const
     {
       return m_subresourceLayout.offset;
@@ -918,6 +1008,10 @@ namespace vk
       : BufferCopy( 0, 0, 0 )
     {}
 
+    BufferCopy(const VkBufferCopy& other ) 
+      : m_bufferCopy(other) 
+    {}
+
     BufferCopy( DeviceSize srcOffset, DeviceSize dstOffset, DeviceSize size)
     {
       m_bufferCopy.srcOffset = srcOffset;
@@ -925,6 +1019,11 @@ namespace vk
       m_bufferCopy.size = size;
     }
 
+    BufferCopy& operator=(const VkBufferCopy& arg)
+    {
+        m_bufferCopy = arg ; 
+        return *this;
+    }
     const DeviceSize& srcOffset() const
     {
       return m_bufferCopy.srcOffset;
@@ -974,6 +1073,10 @@ namespace vk
       : SpecializationMapEntry( 0, 0, 0 )
     {}
 
+    SpecializationMapEntry(const VkSpecializationMapEntry& other ) 
+      : m_specializationMapEntry(other) 
+    {}
+
     SpecializationMapEntry( uint32_t constantID, uint32_t offset, size_t size)
     {
       m_specializationMapEntry.constantID = constantID;
@@ -981,6 +1084,11 @@ namespace vk
       m_specializationMapEntry.size = size;
     }
 
+    SpecializationMapEntry& operator=(const VkSpecializationMapEntry& arg)
+    {
+        m_specializationMapEntry = arg ; 
+        return *this;
+    }
     const uint32_t& constantID() const
     {
       return m_specializationMapEntry.constantID;
@@ -1030,6 +1138,10 @@ namespace vk
       : SpecializationInfo( 0, nullptr, 0, nullptr )
     {}
 
+    SpecializationInfo(const VkSpecializationInfo& other ) 
+      : m_specializationInfo(other) 
+    {}
+
     SpecializationInfo( uint32_t mapEntryCount, const SpecializationMapEntry* pMapEntries, size_t dataSize, const void* pData)
     {
       m_specializationInfo.mapEntryCount = mapEntryCount;
@@ -1038,6 +1150,11 @@ namespace vk
       m_specializationInfo.pData = pData;
     }
 
+    SpecializationInfo& operator=(const VkSpecializationInfo& arg)
+    {
+        m_specializationInfo = arg ; 
+        return *this;
+    }
     const uint32_t& mapEntryCount() const
     {
       return m_specializationInfo.mapEntryCount;
@@ -1158,12 +1275,21 @@ namespace vk
       : ClearDepthStencilValue( 0, 0 )
     {}
 
+    ClearDepthStencilValue(const VkClearDepthStencilValue& other ) 
+      : m_clearDepthStencilValue(other) 
+    {}
+
     ClearDepthStencilValue( float depth, uint32_t stencil)
     {
       m_clearDepthStencilValue.depth = depth;
       m_clearDepthStencilValue.stencil = stencil;
     }
 
+    ClearDepthStencilValue& operator=(const VkClearDepthStencilValue& arg)
+    {
+        m_clearDepthStencilValue = arg ; 
+        return *this;
+    }
     const float& depth() const
     {
       return m_clearDepthStencilValue.depth;
@@ -1246,6 +1372,10 @@ namespace vk
       : PhysicalDeviceFeatures( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
     {}
 
+    PhysicalDeviceFeatures(const VkPhysicalDeviceFeatures& other ) 
+      : m_physicalDeviceFeatures(other) 
+    {}
+
     PhysicalDeviceFeatures( Bool32 robustBufferAccess, Bool32 fullDrawIndexUint32, Bool32 imageCubeArray, Bool32 independentBlend, Bool32 geometryShader, Bool32 tessellationShader, Bool32 sampleRateShading, Bool32 dualSrcBlend, Bool32 logicOp, Bool32 multiDrawIndirect, Bool32 drawIndirectFirstInstance, Bool32 depthClamp, Bool32 depthBiasClamp, Bool32 fillModeNonSolid, Bool32 depthBounds, Bool32 wideLines, Bool32 largePoints, Bool32 alphaToOne, Bool32 multiViewport, Bool32 samplerAnisotropy, Bool32 textureCompressionETC2, Bool32 textureCompressionASTC_LDR, Bool32 textureCompressionBC, Bool32 occlusionQueryPrecise, Bool32 pipelineStatisticsQuery, Bool32 vertexPipelineStoresAndAtomics, Bool32 fragmentStoresAndAtomics, Bool32 shaderTessellationAndGeometryPointSize, Bool32 shaderImageGatherExtended, Bool32 shaderStorageImageExtendedFormats, Bool32 shaderStorageImageMultisample, Bool32 shaderStorageImageReadWithoutFormat, Bool32 shaderStorageImageWriteWithoutFormat, Bool32 shaderUniformBufferArrayDynamicIndexing, Bool32 shaderSampledImageArrayDynamicIndexing, Bool32 shaderStorageBufferArrayDynamicIndexing, Bool32 shaderStorageImageArrayDynamicIndexing, Bool32 shaderClipDistance, Bool32 shaderCullDistance, Bool32 shaderFloat64, Bool32 shaderInt64, Bool32 shaderInt16, Bool32 shaderResourceResidency, Bool32 shaderResourceMinLod, Bool32 sparseBinding, Bool32 sparseResidencyBuffer, Bool32 sparseResidencyImage2D, Bool32 sparseResidencyImage3D, Bool32 sparseResidency2Samples, Bool32 sparseResidency4Samples, Bool32 sparseResidency8Samples, Bool32 sparseResidency16Samples, Bool32 sparseResidencyAliased, Bool32 variableMultisampleRate, Bool32 inheritedQueries)
     {
       m_physicalDeviceFeatures.robustBufferAccess = robustBufferAccess;
@@ -1305,6 +1435,11 @@ namespace vk
       m_physicalDeviceFeatures.inheritedQueries = inheritedQueries;
     }
 
+    PhysicalDeviceFeatures& operator=(const VkPhysicalDeviceFeatures& arg)
+    {
+        m_physicalDeviceFeatures = arg ; 
+        return *this;
+    }
     const Bool32& robustBufferAccess() const
     {
       return m_physicalDeviceFeatures.robustBufferAccess;
@@ -1963,6 +2098,10 @@ namespace vk
       : DrawIndirectCommand( 0, 0, 0, 0 )
     {}
 
+    DrawIndirectCommand(const VkDrawIndirectCommand& other ) 
+      : m_drawIndirectCommand(other) 
+    {}
+
     DrawIndirectCommand( uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
     {
       m_drawIndirectCommand.vertexCount = vertexCount;
@@ -1971,6 +2110,11 @@ namespace vk
       m_drawIndirectCommand.firstInstance = firstInstance;
     }
 
+    DrawIndirectCommand& operator=(const VkDrawIndirectCommand& arg)
+    {
+        m_drawIndirectCommand = arg ; 
+        return *this;
+    }
     const uint32_t& vertexCount() const
     {
       return m_drawIndirectCommand.vertexCount;
@@ -2031,6 +2175,10 @@ namespace vk
       : DrawIndexedIndirectCommand( 0, 0, 0, 0, 0 )
     {}
 
+    DrawIndexedIndirectCommand(const VkDrawIndexedIndirectCommand& other ) 
+      : m_drawIndexedIndirectCommand(other) 
+    {}
+
     DrawIndexedIndirectCommand( uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t vertexOffset, uint32_t firstInstance)
     {
       m_drawIndexedIndirectCommand.indexCount = indexCount;
@@ -2040,6 +2188,11 @@ namespace vk
       m_drawIndexedIndirectCommand.firstInstance = firstInstance;
     }
 
+    DrawIndexedIndirectCommand& operator=(const VkDrawIndexedIndirectCommand& arg)
+    {
+        m_drawIndexedIndirectCommand = arg ; 
+        return *this;
+    }
     const uint32_t& indexCount() const
     {
       return m_drawIndexedIndirectCommand.indexCount;
@@ -2111,6 +2264,10 @@ namespace vk
       : DispatchIndirectCommand( 0, 0, 0 )
     {}
 
+    DispatchIndirectCommand(const VkDispatchIndirectCommand& other ) 
+      : m_dispatchIndirectCommand(other) 
+    {}
+
     DispatchIndirectCommand( uint32_t x, uint32_t y, uint32_t z)
     {
       m_dispatchIndirectCommand.x = x;
@@ -2118,6 +2275,11 @@ namespace vk
       m_dispatchIndirectCommand.z = z;
     }
 
+    DispatchIndirectCommand& operator=(const VkDispatchIndirectCommand& arg)
+    {
+        m_dispatchIndirectCommand = arg ; 
+        return *this;
+    }
     const uint32_t& x() const
     {
       return m_dispatchIndirectCommand.x;
@@ -2180,6 +2342,10 @@ namespace vk
       : DescriptorImageInfo( Sampler(), ImageView(), ImageLayout::eUndefined )
     {}
 
+    DescriptorImageInfo(const VkDescriptorImageInfo& other ) 
+      : m_descriptorImageInfo(other) 
+    {}
+
     DescriptorImageInfo( Sampler sampler, ImageView imageView, ImageLayout imageLayout)
     {
       m_descriptorImageInfo.sampler = sampler;
@@ -2187,6 +2353,11 @@ namespace vk
       m_descriptorImageInfo.imageLayout = static_cast<VkImageLayout>( imageLayout );
     }
 
+    DescriptorImageInfo& operator=(const VkDescriptorImageInfo& arg)
+    {
+        m_descriptorImageInfo = arg ; 
+        return *this;
+    }
     const Sampler& sampler() const
     {
       return m_descriptorImageInfo.sampler;
@@ -2236,12 +2407,21 @@ namespace vk
       : AttachmentReference( 0, ImageLayout::eUndefined )
     {}
 
+    AttachmentReference(const VkAttachmentReference& other ) 
+      : m_attachmentReference(other) 
+    {}
+
     AttachmentReference( uint32_t attachment, ImageLayout layout)
     {
       m_attachmentReference.attachment = attachment;
       m_attachmentReference.layout = static_cast<VkImageLayout>( layout );
     }
 
+    AttachmentReference& operator=(const VkAttachmentReference& arg)
+    {
+        m_attachmentReference = arg ; 
+        return *this;
+    }
     const uint32_t& attachment() const
     {
       return m_attachmentReference.attachment;
@@ -2334,6 +2514,10 @@ namespace vk
       : ComponentMapping( ComponentSwizzle::eIdentity, ComponentSwizzle::eIdentity, ComponentSwizzle::eIdentity, ComponentSwizzle::eIdentity )
     {}
 
+    ComponentMapping(const VkComponentMapping& other ) 
+      : m_componentMapping(other) 
+    {}
+
     ComponentMapping( ComponentSwizzle r, ComponentSwizzle g, ComponentSwizzle b, ComponentSwizzle a)
     {
       m_componentMapping.r = static_cast<VkComponentSwizzle>( r );
@@ -2342,6 +2526,11 @@ namespace vk
       m_componentMapping.a = static_cast<VkComponentSwizzle>( a );
     }
 
+    ComponentMapping& operator=(const VkComponentMapping& arg)
+    {
+        m_componentMapping = arg ; 
+        return *this;
+    }
     const ComponentSwizzle& r() const
     {
       return reinterpret_cast<const ComponentSwizzle&>( m_componentMapping.r );
@@ -2417,12 +2606,21 @@ namespace vk
       : DescriptorPoolSize( DescriptorType::eSampler, 0 )
     {}
 
+    DescriptorPoolSize(const VkDescriptorPoolSize& other ) 
+      : m_descriptorPoolSize(other) 
+    {}
+
     DescriptorPoolSize( DescriptorType type, uint32_t descriptorCount)
     {
       m_descriptorPoolSize.type = static_cast<VkDescriptorType>( type );
       m_descriptorPoolSize.descriptorCount = descriptorCount;
     }
 
+    DescriptorPoolSize& operator=(const VkDescriptorPoolSize& arg)
+    {
+        m_descriptorPoolSize = arg ; 
+        return *this;
+    }
     const DescriptorType& type() const
     {
       return reinterpret_cast<const DescriptorType&>( m_descriptorPoolSize.type );
@@ -2484,6 +2682,10 @@ namespace vk
       : SubpassDescription( 0, PipelineBindPoint::eGraphics, 0, nullptr, 0, nullptr, nullptr, nullptr, 0, nullptr )
     {}
 
+    SubpassDescription(const VkSubpassDescription& other ) 
+      : m_subpassDescription(other) 
+    {}
+
     SubpassDescription( SubpassDescriptionFlags flags, PipelineBindPoint pipelineBindPoint, uint32_t inputAttachmentCount, const AttachmentReference* pInputAttachments, uint32_t colorAttachmentCount, const AttachmentReference* pColorAttachments, const AttachmentReference* pResolveAttachments, const AttachmentReference* pDepthStencilAttachment, uint32_t preserveAttachmentCount, const uint32_t* pPreserveAttachments)
     {
       m_subpassDescription.flags = flags;
@@ -2498,6 +2700,11 @@ namespace vk
       m_subpassDescription.pPreserveAttachments = pPreserveAttachments;
     }
 
+    SubpassDescription& operator=(const VkSubpassDescription& arg)
+    {
+        m_subpassDescription = arg ; 
+        return *this;
+    }
     const SubpassDescriptionFlags& flags() const
     {
       return m_subpassDescription.flags;
@@ -2761,6 +2968,10 @@ namespace vk
       : StencilOpState( StencilOp::eKeep, StencilOp::eKeep, StencilOp::eKeep, CompareOp::eNever, 0, 0, 0 )
     {}
 
+    StencilOpState(const VkStencilOpState& other ) 
+      : m_stencilOpState(other) 
+    {}
+
     StencilOpState( StencilOp failOp, StencilOp passOp, StencilOp depthFailOp, CompareOp compareOp, uint32_t compareMask, uint32_t writeMask, uint32_t reference)
     {
       m_stencilOpState.failOp = static_cast<VkStencilOp>( failOp );
@@ -2772,6 +2983,11 @@ namespace vk
       m_stencilOpState.reference = reference;
     }
 
+    StencilOpState& operator=(const VkStencilOpState& arg)
+    {
+        m_stencilOpState = arg ; 
+        return *this;
+    }
     const StencilOp& failOp() const
     {
       return reinterpret_cast<const StencilOp&>( m_stencilOpState.failOp );
@@ -2914,6 +3130,10 @@ namespace vk
       : VertexInputBindingDescription( 0, 0, VertexInputRate::eVertex )
     {}
 
+    VertexInputBindingDescription(const VkVertexInputBindingDescription& other ) 
+      : m_vertexInputBindingDescription(other) 
+    {}
+
     VertexInputBindingDescription( uint32_t binding, uint32_t stride, VertexInputRate inputRate)
     {
       m_vertexInputBindingDescription.binding = binding;
@@ -2921,6 +3141,11 @@ namespace vk
       m_vertexInputBindingDescription.inputRate = static_cast<VkVertexInputRate>( inputRate );
     }
 
+    VertexInputBindingDescription& operator=(const VkVertexInputBindingDescription& arg)
+    {
+        m_vertexInputBindingDescription = arg ; 
+        return *this;
+    }
     const uint32_t& binding() const
     {
       return m_vertexInputBindingDescription.binding;
@@ -3159,6 +3384,10 @@ namespace vk
       : VertexInputAttributeDescription( 0, 0, Format::eUndefined, 0 )
     {}
 
+    VertexInputAttributeDescription(const VkVertexInputAttributeDescription& other ) 
+      : m_vertexInputAttributeDescription(other) 
+    {}
+
     VertexInputAttributeDescription( uint32_t location, uint32_t binding, Format format, uint32_t offset)
     {
       m_vertexInputAttributeDescription.location = location;
@@ -3167,6 +3396,11 @@ namespace vk
       m_vertexInputAttributeDescription.offset = offset;
     }
 
+    VertexInputAttributeDescription& operator=(const VkVertexInputAttributeDescription& arg)
+    {
+        m_vertexInputAttributeDescription = arg ; 
+        return *this;
+    }
     const uint32_t& location() const
     {
       return m_vertexInputAttributeDescription.location;
@@ -3280,6 +3514,10 @@ namespace vk
       : ApplicationInfo( nullptr, 0, nullptr, 0, 0 )
     {}
 
+    ApplicationInfo(const VkApplicationInfo& other ) 
+      : m_applicationInfo(other) 
+    {}
+
     ApplicationInfo( const char* pApplicationName, uint32_t applicationVersion, const char* pEngineName, uint32_t engineVersion, uint32_t apiVersion)
     {
       m_applicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -3291,6 +3529,11 @@ namespace vk
       m_applicationInfo.apiVersion = apiVersion;
     }
 
+    ApplicationInfo& operator=(const VkApplicationInfo& arg)
+    {
+        m_applicationInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_applicationInfo.sType );
@@ -3384,6 +3627,10 @@ namespace vk
       : DeviceQueueCreateInfo( 0, 0, 0, nullptr )
     {}
 
+    DeviceQueueCreateInfo(const VkDeviceQueueCreateInfo& other ) 
+      : m_deviceQueueCreateInfo(other) 
+    {}
+
     DeviceQueueCreateInfo( DeviceQueueCreateFlags flags, uint32_t queueFamilyIndex, uint32_t queueCount, const float* pQueuePriorities)
     {
       m_deviceQueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
@@ -3394,6 +3641,11 @@ namespace vk
       m_deviceQueueCreateInfo.pQueuePriorities = pQueuePriorities;
     }
 
+    DeviceQueueCreateInfo& operator=(const VkDeviceQueueCreateInfo& arg)
+    {
+        m_deviceQueueCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_deviceQueueCreateInfo.sType );
@@ -3476,6 +3728,10 @@ namespace vk
       : DeviceCreateInfo( 0, 0, nullptr, 0, nullptr, 0, nullptr, nullptr )
     {}
 
+    DeviceCreateInfo(const VkDeviceCreateInfo& other ) 
+      : m_deviceCreateInfo(other) 
+    {}
+
     DeviceCreateInfo( DeviceCreateFlags flags, uint32_t queueCreateInfoCount, const DeviceQueueCreateInfo* pQueueCreateInfos, uint32_t enabledLayerCount, const char* const* ppEnabledLayerNames, uint32_t enabledExtensionCount, const char* const* ppEnabledExtensionNames, const PhysicalDeviceFeatures* pEnabledFeatures)
     {
       m_deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
@@ -3490,6 +3746,11 @@ namespace vk
       m_deviceCreateInfo.pEnabledFeatures = reinterpret_cast<const VkPhysicalDeviceFeatures*>( pEnabledFeatures );
     }
 
+    DeviceCreateInfo& operator=(const VkDeviceCreateInfo& arg)
+    {
+        m_deviceCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_deviceCreateInfo.sType );
@@ -3616,6 +3877,10 @@ namespace vk
       : InstanceCreateInfo( 0, nullptr, 0, nullptr, 0, nullptr )
     {}
 
+    InstanceCreateInfo(const VkInstanceCreateInfo& other ) 
+      : m_instanceCreateInfo(other) 
+    {}
+
     InstanceCreateInfo( InstanceCreateFlags flags, const ApplicationInfo* pApplicationInfo, uint32_t enabledLayerCount, const char* const* ppEnabledLayerNames, uint32_t enabledExtensionCount, const char* const* ppEnabledExtensionNames)
     {
       m_instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
@@ -3628,6 +3893,11 @@ namespace vk
       m_instanceCreateInfo.ppEnabledExtensionNames = ppEnabledExtensionNames;
     }
 
+    InstanceCreateInfo& operator=(const VkInstanceCreateInfo& arg)
+    {
+        m_instanceCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_instanceCreateInfo.sType );
@@ -3732,6 +4002,10 @@ namespace vk
       : MemoryAllocateInfo( 0, 0 )
     {}
 
+    MemoryAllocateInfo(const VkMemoryAllocateInfo& other ) 
+      : m_memoryAllocateInfo(other) 
+    {}
+
     MemoryAllocateInfo( DeviceSize allocationSize, uint32_t memoryTypeIndex)
     {
       m_memoryAllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
@@ -3740,6 +4014,11 @@ namespace vk
       m_memoryAllocateInfo.memoryTypeIndex = memoryTypeIndex;
     }
 
+    MemoryAllocateInfo& operator=(const VkMemoryAllocateInfo& arg)
+    {
+        m_memoryAllocateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_memoryAllocateInfo.sType );
@@ -3800,6 +4079,10 @@ namespace vk
       : MappedMemoryRange( DeviceMemory(), 0, 0 )
     {}
 
+    MappedMemoryRange(const VkMappedMemoryRange& other ) 
+      : m_mappedMemoryRange(other) 
+    {}
+
     MappedMemoryRange( DeviceMemory memory, DeviceSize offset, DeviceSize size)
     {
       m_mappedMemoryRange.sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;
@@ -3809,6 +4092,11 @@ namespace vk
       m_mappedMemoryRange.size = size;
     }
 
+    MappedMemoryRange& operator=(const VkMappedMemoryRange& arg)
+    {
+        m_mappedMemoryRange = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_mappedMemoryRange.sType );
@@ -3880,6 +4168,10 @@ namespace vk
       : WriteDescriptorSet( DescriptorSet(), 0, 0, 0, DescriptorType::eSampler, nullptr, nullptr, nullptr )
     {}
 
+    WriteDescriptorSet(const VkWriteDescriptorSet& other ) 
+      : m_writeDescriptorSet(other) 
+    {}
+
     WriteDescriptorSet( DescriptorSet dstSet, uint32_t dstBinding, uint32_t dstArrayElement, uint32_t descriptorCount, DescriptorType descriptorType, const DescriptorImageInfo* pImageInfo, const DescriptorBufferInfo* pBufferInfo, const BufferView* pTexelBufferView)
     {
       m_writeDescriptorSet.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -3894,6 +4186,11 @@ namespace vk
       m_writeDescriptorSet.pTexelBufferView = pTexelBufferView;
     }
 
+    WriteDescriptorSet& operator=(const VkWriteDescriptorSet& arg)
+    {
+        m_writeDescriptorSet = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_writeDescriptorSet.sType );
@@ -4020,6 +4317,10 @@ namespace vk
       : CopyDescriptorSet( DescriptorSet(), 0, 0, DescriptorSet(), 0, 0, 0 )
     {}
 
+    CopyDescriptorSet(const VkCopyDescriptorSet& other ) 
+      : m_copyDescriptorSet(other) 
+    {}
+
     CopyDescriptorSet( DescriptorSet srcSet, uint32_t srcBinding, uint32_t srcArrayElement, DescriptorSet dstSet, uint32_t dstBinding, uint32_t dstArrayElement, uint32_t descriptorCount)
     {
       m_copyDescriptorSet.sType = VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET;
@@ -4033,6 +4334,11 @@ namespace vk
       m_copyDescriptorSet.descriptorCount = descriptorCount;
     }
 
+    CopyDescriptorSet& operator=(const VkCopyDescriptorSet& arg)
+    {
+        m_copyDescriptorSet = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_copyDescriptorSet.sType );
@@ -4148,6 +4454,10 @@ namespace vk
       : BufferViewCreateInfo( 0, Buffer(), Format::eUndefined, 0, 0 )
     {}
 
+    BufferViewCreateInfo(const VkBufferViewCreateInfo& other ) 
+      : m_bufferViewCreateInfo(other) 
+    {}
+
     BufferViewCreateInfo( BufferViewCreateFlags flags, Buffer buffer, Format format, DeviceSize offset, DeviceSize range)
     {
       m_bufferViewCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO;
@@ -4159,6 +4469,11 @@ namespace vk
       m_bufferViewCreateInfo.range = range;
     }
 
+    BufferViewCreateInfo& operator=(const VkBufferViewCreateInfo& arg)
+    {
+        m_bufferViewCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_bufferViewCreateInfo.sType );
@@ -4252,6 +4567,10 @@ namespace vk
       : ShaderModuleCreateInfo( 0, 0, nullptr )
     {}
 
+    ShaderModuleCreateInfo(const VkShaderModuleCreateInfo& other ) 
+      : m_shaderModuleCreateInfo(other) 
+    {}
+
     ShaderModuleCreateInfo( ShaderModuleCreateFlags flags, size_t codeSize, const uint32_t* pCode)
     {
       m_shaderModuleCreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
@@ -4261,6 +4580,11 @@ namespace vk
       m_shaderModuleCreateInfo.pCode = pCode;
     }
 
+    ShaderModuleCreateInfo& operator=(const VkShaderModuleCreateInfo& arg)
+    {
+        m_shaderModuleCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_shaderModuleCreateInfo.sType );
@@ -4332,6 +4656,10 @@ namespace vk
       : DescriptorSetAllocateInfo( DescriptorPool(), 0, nullptr )
     {}
 
+    DescriptorSetAllocateInfo(const VkDescriptorSetAllocateInfo& other ) 
+      : m_descriptorSetAllocateInfo(other) 
+    {}
+
     DescriptorSetAllocateInfo( DescriptorPool descriptorPool, uint32_t descriptorSetCount, const DescriptorSetLayout* pSetLayouts)
     {
       m_descriptorSetAllocateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
@@ -4341,6 +4669,11 @@ namespace vk
       m_descriptorSetAllocateInfo.pSetLayouts = pSetLayouts;
     }
 
+    DescriptorSetAllocateInfo& operator=(const VkDescriptorSetAllocateInfo& arg)
+    {
+        m_descriptorSetAllocateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_descriptorSetAllocateInfo.sType );
@@ -4412,6 +4745,10 @@ namespace vk
       : PipelineVertexInputStateCreateInfo( 0, 0, nullptr, 0, nullptr )
     {}
 
+    PipelineVertexInputStateCreateInfo(const VkPipelineVertexInputStateCreateInfo& other ) 
+      : m_pipelineVertexInputStateCreateInfo(other) 
+    {}
+
     PipelineVertexInputStateCreateInfo( PipelineVertexInputStateCreateFlags flags, uint32_t vertexBindingDescriptionCount, const VertexInputBindingDescription* pVertexBindingDescriptions, uint32_t vertexAttributeDescriptionCount, const VertexInputAttributeDescription* pVertexAttributeDescriptions)
     {
       m_pipelineVertexInputStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
@@ -4423,6 +4760,11 @@ namespace vk
       m_pipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions = reinterpret_cast<const VkVertexInputAttributeDescription*>( pVertexAttributeDescriptions );
     }
 
+    PipelineVertexInputStateCreateInfo& operator=(const VkPipelineVertexInputStateCreateInfo& arg)
+    {
+        m_pipelineVertexInputStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineVertexInputStateCreateInfo.sType );
@@ -4516,6 +4858,10 @@ namespace vk
       : PipelineInputAssemblyStateCreateInfo( 0, PrimitiveTopology::ePointList, 0 )
     {}
 
+    PipelineInputAssemblyStateCreateInfo(const VkPipelineInputAssemblyStateCreateInfo& other ) 
+      : m_pipelineInputAssemblyStateCreateInfo(other) 
+    {}
+
     PipelineInputAssemblyStateCreateInfo( PipelineInputAssemblyStateCreateFlags flags, PrimitiveTopology topology, Bool32 primitiveRestartEnable)
     {
       m_pipelineInputAssemblyStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
@@ -4525,6 +4871,11 @@ namespace vk
       m_pipelineInputAssemblyStateCreateInfo.primitiveRestartEnable = primitiveRestartEnable;
     }
 
+    PipelineInputAssemblyStateCreateInfo& operator=(const VkPipelineInputAssemblyStateCreateInfo& arg)
+    {
+        m_pipelineInputAssemblyStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineInputAssemblyStateCreateInfo.sType );
@@ -4596,6 +4947,10 @@ namespace vk
       : PipelineTessellationStateCreateInfo( 0, 0 )
     {}
 
+    PipelineTessellationStateCreateInfo(const VkPipelineTessellationStateCreateInfo& other ) 
+      : m_pipelineTessellationStateCreateInfo(other) 
+    {}
+
     PipelineTessellationStateCreateInfo( PipelineTessellationStateCreateFlags flags, uint32_t patchControlPoints)
     {
       m_pipelineTessellationStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO;
@@ -4604,6 +4959,11 @@ namespace vk
       m_pipelineTessellationStateCreateInfo.patchControlPoints = patchControlPoints;
     }
 
+    PipelineTessellationStateCreateInfo& operator=(const VkPipelineTessellationStateCreateInfo& arg)
+    {
+        m_pipelineTessellationStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineTessellationStateCreateInfo.sType );
@@ -4664,6 +5024,10 @@ namespace vk
       : PipelineViewportStateCreateInfo( 0, 0, nullptr, 0, nullptr )
     {}
 
+    PipelineViewportStateCreateInfo(const VkPipelineViewportStateCreateInfo& other ) 
+      : m_pipelineViewportStateCreateInfo(other) 
+    {}
+
     PipelineViewportStateCreateInfo( PipelineViewportStateCreateFlags flags, uint32_t viewportCount, const Viewport* pViewports, uint32_t scissorCount, const Rect2D* pScissors)
     {
       m_pipelineViewportStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
@@ -4675,6 +5039,11 @@ namespace vk
       m_pipelineViewportStateCreateInfo.pScissors = reinterpret_cast<const VkRect2D*>( pScissors );
     }
 
+    PipelineViewportStateCreateInfo& operator=(const VkPipelineViewportStateCreateInfo& arg)
+    {
+        m_pipelineViewportStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineViewportStateCreateInfo.sType );
@@ -4768,6 +5137,10 @@ namespace vk
       : PipelineRasterizationStateCreateInfo( 0, 0, 0, PolygonMode::eFill, CullModeFlags(), FrontFace::eCounterClockwise, 0, 0, 0, 0, 0 )
     {}
 
+    PipelineRasterizationStateCreateInfo(const VkPipelineRasterizationStateCreateInfo& other ) 
+      : m_pipelineRasterizationStateCreateInfo(other) 
+    {}
+
     PipelineRasterizationStateCreateInfo( PipelineRasterizationStateCreateFlags flags, Bool32 depthClampEnable, Bool32 rasterizerDiscardEnable, PolygonMode polygonMode, CullModeFlags cullMode, FrontFace frontFace, Bool32 depthBiasEnable, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor, float lineWidth)
     {
       m_pipelineRasterizationStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
@@ -4785,6 +5158,11 @@ namespace vk
       m_pipelineRasterizationStateCreateInfo.lineWidth = lineWidth;
     }
 
+    PipelineRasterizationStateCreateInfo& operator=(const VkPipelineRasterizationStateCreateInfo& arg)
+    {
+        m_pipelineRasterizationStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineRasterizationStateCreateInfo.sType );
@@ -4944,6 +5322,10 @@ namespace vk
       : PipelineDepthStencilStateCreateInfo( 0, 0, 0, CompareOp::eNever, 0, 0, StencilOpState(), StencilOpState(), 0, 0 )
     {}
 
+    PipelineDepthStencilStateCreateInfo(const VkPipelineDepthStencilStateCreateInfo& other ) 
+      : m_pipelineDepthStencilStateCreateInfo(other) 
+    {}
+
     PipelineDepthStencilStateCreateInfo( PipelineDepthStencilStateCreateFlags flags, Bool32 depthTestEnable, Bool32 depthWriteEnable, CompareOp depthCompareOp, Bool32 depthBoundsTestEnable, Bool32 stencilTestEnable, StencilOpState front, StencilOpState back, float minDepthBounds, float maxDepthBounds)
     {
       m_pipelineDepthStencilStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
@@ -4960,6 +5342,11 @@ namespace vk
       m_pipelineDepthStencilStateCreateInfo.maxDepthBounds = maxDepthBounds;
     }
 
+    PipelineDepthStencilStateCreateInfo& operator=(const VkPipelineDepthStencilStateCreateInfo& arg)
+    {
+        m_pipelineDepthStencilStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineDepthStencilStateCreateInfo.sType );
@@ -5108,6 +5495,10 @@ namespace vk
       : PipelineCacheCreateInfo( 0, 0, nullptr )
     {}
 
+    PipelineCacheCreateInfo(const VkPipelineCacheCreateInfo& other ) 
+      : m_pipelineCacheCreateInfo(other) 
+    {}
+
     PipelineCacheCreateInfo( PipelineCacheCreateFlags flags, size_t initialDataSize, const void* pInitialData)
     {
       m_pipelineCacheCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
@@ -5117,6 +5508,11 @@ namespace vk
       m_pipelineCacheCreateInfo.pInitialData = pInitialData;
     }
 
+    PipelineCacheCreateInfo& operator=(const VkPipelineCacheCreateInfo& arg)
+    {
+        m_pipelineCacheCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineCacheCreateInfo.sType );
@@ -5188,6 +5584,10 @@ namespace vk
       : SamplerCreateInfo( 0, Filter::eNearest, Filter::eNearest, SamplerMipmapMode::eNearest, SamplerAddressMode::eRepeat, SamplerAddressMode::eRepeat, SamplerAddressMode::eRepeat, 0, 0, 0, 0, CompareOp::eNever, 0, 0, BorderColor::eFloatTransparentBlack, 0 )
     {}
 
+    SamplerCreateInfo(const VkSamplerCreateInfo& other ) 
+      : m_samplerCreateInfo(other) 
+    {}
+
     SamplerCreateInfo( SamplerCreateFlags flags, Filter magFilter, Filter minFilter, SamplerMipmapMode mipmapMode, SamplerAddressMode addressModeU, SamplerAddressMode addressModeV, SamplerAddressMode addressModeW, float mipLodBias, Bool32 anisotropyEnable, float maxAnisotropy, Bool32 compareEnable, CompareOp compareOp, float minLod, float maxLod, BorderColor borderColor, Bool32 unnormalizedCoordinates)
     {
       m_samplerCreateInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
@@ -5210,6 +5610,11 @@ namespace vk
       m_samplerCreateInfo.unnormalizedCoordinates = unnormalizedCoordinates;
     }
 
+    SamplerCreateInfo& operator=(const VkSamplerCreateInfo& arg)
+    {
+        m_samplerCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_samplerCreateInfo.sType );
@@ -5424,6 +5829,10 @@ namespace vk
       : CommandBufferAllocateInfo( CommandPool(), CommandBufferLevel::ePrimary, 0 )
     {}
 
+    CommandBufferAllocateInfo(const VkCommandBufferAllocateInfo& other ) 
+      : m_commandBufferAllocateInfo(other) 
+    {}
+
     CommandBufferAllocateInfo( CommandPool commandPool, CommandBufferLevel level, uint32_t commandBufferCount)
     {
       m_commandBufferAllocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -5433,6 +5842,11 @@ namespace vk
       m_commandBufferAllocateInfo.commandBufferCount = commandBufferCount;
     }
 
+    CommandBufferAllocateInfo& operator=(const VkCommandBufferAllocateInfo& arg)
+    {
+        m_commandBufferAllocateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_commandBufferAllocateInfo.sType );
@@ -5504,6 +5918,10 @@ namespace vk
       : RenderPassBeginInfo( RenderPass(), Framebuffer(), Rect2D(), 0, nullptr )
     {}
 
+    RenderPassBeginInfo(const VkRenderPassBeginInfo& other ) 
+      : m_renderPassBeginInfo(other) 
+    {}
+
     RenderPassBeginInfo( RenderPass renderPass, Framebuffer framebuffer, Rect2D renderArea, uint32_t clearValueCount, const ClearValue* pClearValues)
     {
       m_renderPassBeginInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
@@ -5515,6 +5933,11 @@ namespace vk
       m_renderPassBeginInfo.pClearValues = reinterpret_cast<const VkClearValue*>( pClearValues );
     }
 
+    RenderPassBeginInfo& operator=(const VkRenderPassBeginInfo& arg)
+    {
+        m_renderPassBeginInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_renderPassBeginInfo.sType );
@@ -5608,6 +6031,10 @@ namespace vk
       : EventCreateInfo( 0 )
     {}
 
+    EventCreateInfo(const VkEventCreateInfo& other ) 
+      : m_eventCreateInfo(other) 
+    {}
+
     EventCreateInfo( EventCreateFlags flags)
     {
       m_eventCreateInfo.sType = VK_STRUCTURE_TYPE_EVENT_CREATE_INFO;
@@ -5615,6 +6042,11 @@ namespace vk
       m_eventCreateInfo.flags = flags;
     }
 
+    EventCreateInfo& operator=(const VkEventCreateInfo& arg)
+    {
+        m_eventCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_eventCreateInfo.sType );
@@ -5664,6 +6096,10 @@ namespace vk
       : SemaphoreCreateInfo( 0 )
     {}
 
+    SemaphoreCreateInfo(const VkSemaphoreCreateInfo& other ) 
+      : m_semaphoreCreateInfo(other) 
+    {}
+
     SemaphoreCreateInfo( SemaphoreCreateFlags flags)
     {
       m_semaphoreCreateInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -5671,6 +6107,11 @@ namespace vk
       m_semaphoreCreateInfo.flags = flags;
     }
 
+    SemaphoreCreateInfo& operator=(const VkSemaphoreCreateInfo& arg)
+    {
+        m_semaphoreCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_semaphoreCreateInfo.sType );
@@ -5720,6 +6161,10 @@ namespace vk
       : FramebufferCreateInfo( 0, RenderPass(), 0, nullptr, 0, 0, 0 )
     {}
 
+    FramebufferCreateInfo(const VkFramebufferCreateInfo& other ) 
+      : m_framebufferCreateInfo(other) 
+    {}
+
     FramebufferCreateInfo( FramebufferCreateFlags flags, RenderPass renderPass, uint32_t attachmentCount, const ImageView* pAttachments, uint32_t width, uint32_t height, uint32_t layers)
     {
       m_framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
@@ -5733,6 +6178,11 @@ namespace vk
       m_framebufferCreateInfo.layers = layers;
     }
 
+    FramebufferCreateInfo& operator=(const VkFramebufferCreateInfo& arg)
+    {
+        m_framebufferCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_framebufferCreateInfo.sType );
@@ -5875,6 +6325,10 @@ namespace vk
       : PresentInfoKHR( 0, nullptr, 0, nullptr, nullptr, nullptr )
     {}
 
+    PresentInfoKHR(const VkPresentInfoKHR& other ) 
+      : m_presentInfoKHR(other) 
+    {}
+
     PresentInfoKHR( uint32_t waitSemaphoreCount, const Semaphore* pWaitSemaphores, uint32_t swapchainCount, const SwapchainKHR* pSwapchains, const uint32_t* pImageIndices, Result* pResults)
     {
       m_presentInfoKHR.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
@@ -5887,6 +6341,11 @@ namespace vk
       m_presentInfoKHR.pResults = reinterpret_cast<VkResult*>( pResults );
     }
 
+    PresentInfoKHR& operator=(const VkPresentInfoKHR& arg)
+    {
+        m_presentInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_presentInfoKHR.sType );
@@ -6004,6 +6463,10 @@ namespace vk
       : PipelineDynamicStateCreateInfo( 0, 0, nullptr )
     {}
 
+    PipelineDynamicStateCreateInfo(const VkPipelineDynamicStateCreateInfo& other ) 
+      : m_pipelineDynamicStateCreateInfo(other) 
+    {}
+
     PipelineDynamicStateCreateInfo( PipelineDynamicStateCreateFlags flags, uint32_t dynamicStateCount, const DynamicState* pDynamicStates)
     {
       m_pipelineDynamicStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
@@ -6013,6 +6476,11 @@ namespace vk
       m_pipelineDynamicStateCreateInfo.pDynamicStates = reinterpret_cast<const VkDynamicState*>( pDynamicStates );
     }
 
+    PipelineDynamicStateCreateInfo& operator=(const VkPipelineDynamicStateCreateInfo& arg)
+    {
+        m_pipelineDynamicStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineDynamicStateCreateInfo.sType );
@@ -6263,6 +6731,10 @@ namespace vk
       : MemoryBarrier( AccessFlags(), AccessFlags() )
     {}
 
+    MemoryBarrier(const VkMemoryBarrier& other ) 
+      : m_memoryBarrier(other) 
+    {}
+
     MemoryBarrier( AccessFlags srcAccessMask, AccessFlags dstAccessMask)
     {
       m_memoryBarrier.sType = VK_STRUCTURE_TYPE_MEMORY_BARRIER;
@@ -6271,6 +6743,11 @@ namespace vk
       m_memoryBarrier.dstAccessMask = static_cast<VkAccessFlags>( dstAccessMask );
     }
 
+    MemoryBarrier& operator=(const VkMemoryBarrier& arg)
+    {
+        m_memoryBarrier = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_memoryBarrier.sType );
@@ -6331,6 +6808,10 @@ namespace vk
       : BufferMemoryBarrier( AccessFlags(), AccessFlags(), 0, 0, Buffer(), 0, 0 )
     {}
 
+    BufferMemoryBarrier(const VkBufferMemoryBarrier& other ) 
+      : m_bufferMemoryBarrier(other) 
+    {}
+
     BufferMemoryBarrier( AccessFlags srcAccessMask, AccessFlags dstAccessMask, uint32_t srcQueueFamilyIndex, uint32_t dstQueueFamilyIndex, Buffer buffer, DeviceSize offset, DeviceSize size)
     {
       m_bufferMemoryBarrier.sType = VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER;
@@ -6344,6 +6825,11 @@ namespace vk
       m_bufferMemoryBarrier.size = size;
     }
 
+    BufferMemoryBarrier& operator=(const VkBufferMemoryBarrier& arg)
+    {
+        m_bufferMemoryBarrier = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_bufferMemoryBarrier.sType );
@@ -6493,6 +6979,10 @@ namespace vk
       : BufferCreateInfo( BufferCreateFlags(), 0, BufferUsageFlags(), SharingMode::eExclusive, 0, nullptr )
     {}
 
+    BufferCreateInfo(const VkBufferCreateInfo& other ) 
+      : m_bufferCreateInfo(other) 
+    {}
+
     BufferCreateInfo( BufferCreateFlags flags, DeviceSize size, BufferUsageFlags usage, SharingMode sharingMode, uint32_t queueFamilyIndexCount, const uint32_t* pQueueFamilyIndices)
     {
       m_bufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -6505,6 +6995,11 @@ namespace vk
       m_bufferCreateInfo.pQueueFamilyIndices = pQueueFamilyIndices;
     }
 
+    BufferCreateInfo& operator=(const VkBufferCreateInfo& arg)
+    {
+        m_bufferCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_bufferCreateInfo.sType );
@@ -6628,6 +7123,10 @@ namespace vk
       : DescriptorSetLayoutBinding( 0, DescriptorType::eSampler, 0, ShaderStageFlags(), nullptr )
     {}
 
+    DescriptorSetLayoutBinding(const VkDescriptorSetLayoutBinding& other ) 
+      : m_descriptorSetLayoutBinding(other) 
+    {}
+
     DescriptorSetLayoutBinding( uint32_t binding, DescriptorType descriptorType, uint32_t descriptorCount, ShaderStageFlags stageFlags, const Sampler* pImmutableSamplers)
     {
       m_descriptorSetLayoutBinding.binding = binding;
@@ -6637,6 +7136,11 @@ namespace vk
       m_descriptorSetLayoutBinding.pImmutableSamplers = pImmutableSamplers;
     }
 
+    DescriptorSetLayoutBinding& operator=(const VkDescriptorSetLayoutBinding& arg)
+    {
+        m_descriptorSetLayoutBinding = arg ; 
+        return *this;
+    }
     const uint32_t& binding() const
     {
       return m_descriptorSetLayoutBinding.binding;
@@ -6708,6 +7212,10 @@ namespace vk
       : DescriptorSetLayoutCreateInfo( 0, 0, nullptr )
     {}
 
+    DescriptorSetLayoutCreateInfo(const VkDescriptorSetLayoutCreateInfo& other ) 
+      : m_descriptorSetLayoutCreateInfo(other) 
+    {}
+
     DescriptorSetLayoutCreateInfo( DescriptorSetLayoutCreateFlags flags, uint32_t bindingCount, const DescriptorSetLayoutBinding* pBindings)
     {
       m_descriptorSetLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
@@ -6717,6 +7225,11 @@ namespace vk
       m_descriptorSetLayoutCreateInfo.pBindings = reinterpret_cast<const VkDescriptorSetLayoutBinding*>( pBindings );
     }
 
+    DescriptorSetLayoutCreateInfo& operator=(const VkDescriptorSetLayoutCreateInfo& arg)
+    {
+        m_descriptorSetLayoutCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_descriptorSetLayoutCreateInfo.sType );
@@ -6788,6 +7301,10 @@ namespace vk
       : PipelineShaderStageCreateInfo( 0, ShaderStageFlagBits::eVertex, ShaderModule(), nullptr, nullptr )
     {}
 
+    PipelineShaderStageCreateInfo(const VkPipelineShaderStageCreateInfo& other ) 
+      : m_pipelineShaderStageCreateInfo(other) 
+    {}
+
     PipelineShaderStageCreateInfo( PipelineShaderStageCreateFlags flags, ShaderStageFlagBits stage, ShaderModule module, const char* pName, const SpecializationInfo* pSpecializationInfo)
     {
       m_pipelineShaderStageCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -6799,6 +7316,11 @@ namespace vk
       m_pipelineShaderStageCreateInfo.pSpecializationInfo = reinterpret_cast<const VkSpecializationInfo*>( pSpecializationInfo );
     }
 
+    PipelineShaderStageCreateInfo& operator=(const VkPipelineShaderStageCreateInfo& arg)
+    {
+        m_pipelineShaderStageCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineShaderStageCreateInfo.sType );
@@ -6892,6 +7414,10 @@ namespace vk
       : PushConstantRange( ShaderStageFlags(), 0, 0 )
     {}
 
+    PushConstantRange(const VkPushConstantRange& other ) 
+      : m_pushConstantRange(other) 
+    {}
+
     PushConstantRange( ShaderStageFlags stageFlags, uint32_t offset, uint32_t size)
     {
       m_pushConstantRange.stageFlags = static_cast<VkShaderStageFlags>( stageFlags );
@@ -6899,6 +7425,11 @@ namespace vk
       m_pushConstantRange.size = size;
     }
 
+    PushConstantRange& operator=(const VkPushConstantRange& arg)
+    {
+        m_pushConstantRange = arg ; 
+        return *this;
+    }
     const ShaderStageFlags& stageFlags() const
     {
       return reinterpret_cast<const ShaderStageFlags&>( m_pushConstantRange.stageFlags );
@@ -6948,6 +7479,10 @@ namespace vk
       : PipelineLayoutCreateInfo( 0, 0, nullptr, 0, nullptr )
     {}
 
+    PipelineLayoutCreateInfo(const VkPipelineLayoutCreateInfo& other ) 
+      : m_pipelineLayoutCreateInfo(other) 
+    {}
+
     PipelineLayoutCreateInfo( PipelineLayoutCreateFlags flags, uint32_t setLayoutCount, const DescriptorSetLayout* pSetLayouts, uint32_t pushConstantRangeCount, const PushConstantRange* pPushConstantRanges)
     {
       m_pipelineLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
@@ -6959,6 +7494,11 @@ namespace vk
       m_pipelineLayoutCreateInfo.pPushConstantRanges = reinterpret_cast<const VkPushConstantRange*>( pPushConstantRanges );
     }
 
+    PipelineLayoutCreateInfo& operator=(const VkPipelineLayoutCreateInfo& arg)
+    {
+        m_pipelineLayoutCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineLayoutCreateInfo.sType );
@@ -7101,6 +7641,10 @@ namespace vk
       : ComputePipelineCreateInfo( PipelineCreateFlags(), PipelineShaderStageCreateInfo(), PipelineLayout(), Pipeline(), 0 )
     {}
 
+    ComputePipelineCreateInfo(const VkComputePipelineCreateInfo& other ) 
+      : m_computePipelineCreateInfo(other) 
+    {}
+
     ComputePipelineCreateInfo( PipelineCreateFlags flags, PipelineShaderStageCreateInfo stage, PipelineLayout layout, Pipeline basePipelineHandle, int32_t basePipelineIndex)
     {
       m_computePipelineCreateInfo.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
@@ -7112,6 +7656,11 @@ namespace vk
       m_computePipelineCreateInfo.basePipelineIndex = basePipelineIndex;
     }
 
+    ComputePipelineCreateInfo& operator=(const VkComputePipelineCreateInfo& arg)
+    {
+        m_computePipelineCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_computePipelineCreateInfo.sType );
@@ -7220,6 +7769,10 @@ namespace vk
       : PipelineColorBlendAttachmentState( 0, BlendFactor::eZero, BlendFactor::eZero, BlendOp::eAdd, BlendFactor::eZero, BlendFactor::eZero, BlendOp::eAdd, ColorComponentFlags() )
     {}
 
+    PipelineColorBlendAttachmentState(const VkPipelineColorBlendAttachmentState& other ) 
+      : m_pipelineColorBlendAttachmentState(other) 
+    {}
+
     PipelineColorBlendAttachmentState( Bool32 blendEnable, BlendFactor srcColorBlendFactor, BlendFactor dstColorBlendFactor, BlendOp colorBlendOp, BlendFactor srcAlphaBlendFactor, BlendFactor dstAlphaBlendFactor, BlendOp alphaBlendOp, ColorComponentFlags colorWriteMask)
     {
       m_pipelineColorBlendAttachmentState.blendEnable = blendEnable;
@@ -7232,6 +7785,11 @@ namespace vk
       m_pipelineColorBlendAttachmentState.colorWriteMask = static_cast<VkColorComponentFlags>( colorWriteMask );
     }
 
+    PipelineColorBlendAttachmentState& operator=(const VkPipelineColorBlendAttachmentState& arg)
+    {
+        m_pipelineColorBlendAttachmentState = arg ; 
+        return *this;
+    }
     const Bool32& blendEnable() const
     {
       return m_pipelineColorBlendAttachmentState.blendEnable;
@@ -7336,6 +7894,10 @@ namespace vk
       : PipelineColorBlendStateCreateInfo( 0, 0, LogicOp::eClear, 0, nullptr, { 0 } )
     {}
 
+    PipelineColorBlendStateCreateInfo(const VkPipelineColorBlendStateCreateInfo& other ) 
+      : m_pipelineColorBlendStateCreateInfo(other) 
+    {}
+
     PipelineColorBlendStateCreateInfo( PipelineColorBlendStateCreateFlags flags, Bool32 logicOpEnable, LogicOp logicOp, uint32_t attachmentCount, const PipelineColorBlendAttachmentState* pAttachments, std::array<float,4> const& blendConstants)
     {
       m_pipelineColorBlendStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
@@ -7348,6 +7910,11 @@ namespace vk
       memcpy( &m_pipelineColorBlendStateCreateInfo.blendConstants, blendConstants.data(), 4 * sizeof( float ) );
     }
 
+    PipelineColorBlendStateCreateInfo& operator=(const VkPipelineColorBlendStateCreateInfo& arg)
+    {
+        m_pipelineColorBlendStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineColorBlendStateCreateInfo.sType );
@@ -7464,6 +8031,10 @@ namespace vk
       : FenceCreateInfo( FenceCreateFlags() )
     {}
 
+    FenceCreateInfo(const VkFenceCreateInfo& other ) 
+      : m_fenceCreateInfo(other) 
+    {}
+
     FenceCreateInfo( FenceCreateFlags flags)
     {
       m_fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
@@ -7471,6 +8042,11 @@ namespace vk
       m_fenceCreateInfo.flags = static_cast<VkFenceCreateFlags>( flags );
     }
 
+    FenceCreateInfo& operator=(const VkFenceCreateInfo& arg)
+    {
+        m_fenceCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_fenceCreateInfo.sType );
@@ -7634,6 +8210,10 @@ namespace vk
       : CommandBufferInheritanceInfo( RenderPass(), 0, Framebuffer(), 0, QueryControlFlags(), QueryPipelineStatisticFlags() )
     {}
 
+    CommandBufferInheritanceInfo(const VkCommandBufferInheritanceInfo& other ) 
+      : m_commandBufferInheritanceInfo(other) 
+    {}
+
     CommandBufferInheritanceInfo( RenderPass renderPass, uint32_t subpass, Framebuffer framebuffer, Bool32 occlusionQueryEnable, QueryControlFlags queryFlags, QueryPipelineStatisticFlags pipelineStatistics)
     {
       m_commandBufferInheritanceInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO;
@@ -7646,6 +8226,11 @@ namespace vk
       m_commandBufferInheritanceInfo.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>( pipelineStatistics );
     }
 
+    CommandBufferInheritanceInfo& operator=(const VkCommandBufferInheritanceInfo& arg)
+    {
+        m_commandBufferInheritanceInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_commandBufferInheritanceInfo.sType );
@@ -7750,6 +8335,10 @@ namespace vk
       : CommandBufferBeginInfo( CommandBufferUsageFlags(), nullptr )
     {}
 
+    CommandBufferBeginInfo(const VkCommandBufferBeginInfo& other ) 
+      : m_commandBufferBeginInfo(other) 
+    {}
+
     CommandBufferBeginInfo( CommandBufferUsageFlags flags, const CommandBufferInheritanceInfo* pInheritanceInfo)
     {
       m_commandBufferBeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
@@ -7758,6 +8347,11 @@ namespace vk
       m_commandBufferBeginInfo.pInheritanceInfo = reinterpret_cast<const VkCommandBufferInheritanceInfo*>( pInheritanceInfo );
     }
 
+    CommandBufferBeginInfo& operator=(const VkCommandBufferBeginInfo& arg)
+    {
+        m_commandBufferBeginInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_commandBufferBeginInfo.sType );
@@ -7818,6 +8412,10 @@ namespace vk
       : QueryPoolCreateInfo( 0, QueryType::eOcclusion, 0, QueryPipelineStatisticFlags() )
     {}
 
+    QueryPoolCreateInfo(const VkQueryPoolCreateInfo& other ) 
+      : m_queryPoolCreateInfo(other) 
+    {}
+
     QueryPoolCreateInfo( QueryPoolCreateFlags flags, QueryType queryType, uint32_t queryCount, QueryPipelineStatisticFlags pipelineStatistics)
     {
       m_queryPoolCreateInfo.sType = VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO;
@@ -7828,6 +8426,11 @@ namespace vk
       m_queryPoolCreateInfo.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>( pipelineStatistics );
     }
 
+    QueryPoolCreateInfo& operator=(const VkQueryPoolCreateInfo& arg)
+    {
+        m_queryPoolCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_queryPoolCreateInfo.sType );
@@ -7925,6 +8528,10 @@ namespace vk
       : ImageSubresource( ImageAspectFlags(), 0, 0 )
     {}
 
+    ImageSubresource(const VkImageSubresource& other ) 
+      : m_imageSubresource(other) 
+    {}
+
     ImageSubresource( ImageAspectFlags aspectMask, uint32_t mipLevel, uint32_t arrayLayer)
     {
       m_imageSubresource.aspectMask = static_cast<VkImageAspectFlags>( aspectMask );
@@ -7932,6 +8539,11 @@ namespace vk
       m_imageSubresource.arrayLayer = arrayLayer;
     }
 
+    ImageSubresource& operator=(const VkImageSubresource& arg)
+    {
+        m_imageSubresource = arg ; 
+        return *this;
+    }
     const ImageAspectFlags& aspectMask() const
     {
       return reinterpret_cast<const ImageAspectFlags&>( m_imageSubresource.aspectMask );
@@ -7981,6 +8593,10 @@ namespace vk
       : ImageSubresourceLayers( ImageAspectFlags(), 0, 0, 0 )
     {}
 
+    ImageSubresourceLayers(const VkImageSubresourceLayers& other ) 
+      : m_imageSubresourceLayers(other) 
+    {}
+
     ImageSubresourceLayers( ImageAspectFlags aspectMask, uint32_t mipLevel, uint32_t baseArrayLayer, uint32_t layerCount)
     {
       m_imageSubresourceLayers.aspectMask = static_cast<VkImageAspectFlags>( aspectMask );
@@ -7989,6 +8605,11 @@ namespace vk
       m_imageSubresourceLayers.layerCount = layerCount;
     }
 
+    ImageSubresourceLayers& operator=(const VkImageSubresourceLayers& arg)
+    {
+        m_imageSubresourceLayers = arg ; 
+        return *this;
+    }
     const ImageAspectFlags& aspectMask() const
     {
       return reinterpret_cast<const ImageAspectFlags&>( m_imageSubresourceLayers.aspectMask );
@@ -8049,6 +8670,10 @@ namespace vk
       : ImageSubresourceRange( ImageAspectFlags(), 0, 0, 0, 0 )
     {}
 
+    ImageSubresourceRange(const VkImageSubresourceRange& other ) 
+      : m_imageSubresourceRange(other) 
+    {}
+
     ImageSubresourceRange( ImageAspectFlags aspectMask, uint32_t baseMipLevel, uint32_t levelCount, uint32_t baseArrayLayer, uint32_t layerCount)
     {
       m_imageSubresourceRange.aspectMask = static_cast<VkImageAspectFlags>( aspectMask );
@@ -8058,6 +8683,11 @@ namespace vk
       m_imageSubresourceRange.layerCount = layerCount;
     }
 
+    ImageSubresourceRange& operator=(const VkImageSubresourceRange& arg)
+    {
+        m_imageSubresourceRange = arg ; 
+        return *this;
+    }
     const ImageAspectFlags& aspectMask() const
     {
       return reinterpret_cast<const ImageAspectFlags&>( m_imageSubresourceRange.aspectMask );
@@ -8129,6 +8759,10 @@ namespace vk
       : ImageMemoryBarrier( AccessFlags(), AccessFlags(), ImageLayout::eUndefined, ImageLayout::eUndefined, 0, 0, Image(), ImageSubresourceRange() )
     {}
 
+    ImageMemoryBarrier(const VkImageMemoryBarrier& other ) 
+      : m_imageMemoryBarrier(other) 
+    {}
+
     ImageMemoryBarrier( AccessFlags srcAccessMask, AccessFlags dstAccessMask, ImageLayout oldLayout, ImageLayout newLayout, uint32_t srcQueueFamilyIndex, uint32_t dstQueueFamilyIndex, Image image, ImageSubresourceRange subresourceRange)
     {
       m_imageMemoryBarrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
@@ -8143,6 +8777,11 @@ namespace vk
       m_imageMemoryBarrier.subresourceRange = static_cast<VkImageSubresourceRange>( subresourceRange );
     }
 
+    ImageMemoryBarrier& operator=(const VkImageMemoryBarrier& arg)
+    {
+        m_imageMemoryBarrier = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_imageMemoryBarrier.sType );
@@ -8269,6 +8908,10 @@ namespace vk
       : ImageViewCreateInfo( 0, Image(), ImageViewType::e1D, Format::eUndefined, ComponentMapping(), ImageSubresourceRange() )
     {}
 
+    ImageViewCreateInfo(const VkImageViewCreateInfo& other ) 
+      : m_imageViewCreateInfo(other) 
+    {}
+
     ImageViewCreateInfo( ImageViewCreateFlags flags, Image image, ImageViewType viewType, Format format, ComponentMapping components, ImageSubresourceRange subresourceRange)
     {
       m_imageViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
@@ -8281,6 +8924,11 @@ namespace vk
       m_imageViewCreateInfo.subresourceRange = static_cast<VkImageSubresourceRange>( subresourceRange );
     }
 
+    ImageViewCreateInfo& operator=(const VkImageViewCreateInfo& arg)
+    {
+        m_imageViewCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_imageViewCreateInfo.sType );
@@ -8385,6 +9033,10 @@ namespace vk
       : ImageCopy( ImageSubresourceLayers(), Offset3D(), ImageSubresourceLayers(), Offset3D(), Extent3D() )
     {}
 
+    ImageCopy(const VkImageCopy& other ) 
+      : m_imageCopy(other) 
+    {}
+
     ImageCopy( ImageSubresourceLayers srcSubresource, Offset3D srcOffset, ImageSubresourceLayers dstSubresource, Offset3D dstOffset, Extent3D extent)
     {
       m_imageCopy.srcSubresource = static_cast<VkImageSubresourceLayers>( srcSubresource );
@@ -8394,6 +9046,11 @@ namespace vk
       m_imageCopy.extent = static_cast<VkExtent3D>( extent );
     }
 
+    ImageCopy& operator=(const VkImageCopy& arg)
+    {
+        m_imageCopy = arg ; 
+        return *this;
+    }
     const ImageSubresourceLayers& srcSubresource() const
     {
       return reinterpret_cast<const ImageSubresourceLayers&>( m_imageCopy.srcSubresource );
@@ -8465,6 +9122,10 @@ namespace vk
       : ImageBlit( ImageSubresourceLayers(), { Offset3D() }, ImageSubresourceLayers(), { Offset3D() } )
     {}
 
+    ImageBlit(const VkImageBlit& other ) 
+      : m_imageBlit(other) 
+    {}
+
     ImageBlit( ImageSubresourceLayers srcSubresource, std::array<Offset3D,2> const& srcOffsets, ImageSubresourceLayers dstSubresource, std::array<Offset3D,2> const& dstOffsets)
     {
       m_imageBlit.srcSubresource = static_cast<VkImageSubresourceLayers>( srcSubresource );
@@ -8473,6 +9134,11 @@ namespace vk
       memcpy( &m_imageBlit.dstOffsets, dstOffsets.data(), 2 * sizeof( Offset3D ) );
     }
 
+    ImageBlit& operator=(const VkImageBlit& arg)
+    {
+        m_imageBlit = arg ; 
+        return *this;
+    }
     const ImageSubresourceLayers& srcSubresource() const
     {
       return reinterpret_cast<const ImageSubresourceLayers&>( m_imageBlit.srcSubresource );
@@ -8533,6 +9199,10 @@ namespace vk
       : BufferImageCopy( 0, 0, 0, ImageSubresourceLayers(), Offset3D(), Extent3D() )
     {}
 
+    BufferImageCopy(const VkBufferImageCopy& other ) 
+      : m_bufferImageCopy(other) 
+    {}
+
     BufferImageCopy( DeviceSize bufferOffset, uint32_t bufferRowLength, uint32_t bufferImageHeight, ImageSubresourceLayers imageSubresource, Offset3D imageOffset, Extent3D imageExtent)
     {
       m_bufferImageCopy.bufferOffset = bufferOffset;
@@ -8543,6 +9213,11 @@ namespace vk
       m_bufferImageCopy.imageExtent = static_cast<VkExtent3D>( imageExtent );
     }
 
+    BufferImageCopy& operator=(const VkBufferImageCopy& arg)
+    {
+        m_bufferImageCopy = arg ; 
+        return *this;
+    }
     const DeviceSize& bufferOffset() const
     {
       return m_bufferImageCopy.bufferOffset;
@@ -8625,6 +9300,10 @@ namespace vk
       : ImageResolve( ImageSubresourceLayers(), Offset3D(), ImageSubresourceLayers(), Offset3D(), Extent3D() )
     {}
 
+    ImageResolve(const VkImageResolve& other ) 
+      : m_imageResolve(other) 
+    {}
+
     ImageResolve( ImageSubresourceLayers srcSubresource, Offset3D srcOffset, ImageSubresourceLayers dstSubresource, Offset3D dstOffset, Extent3D extent)
     {
       m_imageResolve.srcSubresource = static_cast<VkImageSubresourceLayers>( srcSubresource );
@@ -8634,6 +9313,11 @@ namespace vk
       m_imageResolve.extent = static_cast<VkExtent3D>( extent );
     }
 
+    ImageResolve& operator=(const VkImageResolve& arg)
+    {
+        m_imageResolve = arg ; 
+        return *this;
+    }
     const ImageSubresourceLayers& srcSubresource() const
     {
       return reinterpret_cast<const ImageSubresourceLayers&>( m_imageResolve.srcSubresource );
@@ -8705,6 +9389,10 @@ namespace vk
       : ClearAttachment( ImageAspectFlags(), 0, ClearValue() )
     {}
 
+    ClearAttachment(const VkClearAttachment& other ) 
+      : m_clearAttachment(other) 
+    {}
+
     ClearAttachment( ImageAspectFlags aspectMask, uint32_t colorAttachment, ClearValue clearValue)
     {
       m_clearAttachment.aspectMask = static_cast<VkImageAspectFlags>( aspectMask );
@@ -8712,6 +9400,11 @@ namespace vk
       m_clearAttachment.clearValue = static_cast<VkClearValue>( clearValue );
     }
 
+    ClearAttachment& operator=(const VkClearAttachment& arg)
+    {
+        m_clearAttachment = arg ; 
+        return *this;
+    }
     const ImageAspectFlags& aspectMask() const
     {
       return reinterpret_cast<const ImageAspectFlags&>( m_clearAttachment.aspectMask );
@@ -8851,6 +9544,10 @@ namespace vk
       : SparseMemoryBind( 0, 0, DeviceMemory(), 0, SparseMemoryBindFlags() )
     {}
 
+    SparseMemoryBind(const VkSparseMemoryBind& other ) 
+      : m_sparseMemoryBind(other) 
+    {}
+
     SparseMemoryBind( DeviceSize resourceOffset, DeviceSize size, DeviceMemory memory, DeviceSize memoryOffset, SparseMemoryBindFlags flags)
     {
       m_sparseMemoryBind.resourceOffset = resourceOffset;
@@ -8860,6 +9557,11 @@ namespace vk
       m_sparseMemoryBind.flags = static_cast<VkSparseMemoryBindFlags>( flags );
     }
 
+    SparseMemoryBind& operator=(const VkSparseMemoryBind& arg)
+    {
+        m_sparseMemoryBind = arg ; 
+        return *this;
+    }
     const DeviceSize& resourceOffset() const
     {
       return m_sparseMemoryBind.resourceOffset;
@@ -8931,6 +9633,10 @@ namespace vk
       : SparseImageMemoryBind( ImageSubresource(), Offset3D(), Extent3D(), DeviceMemory(), 0, SparseMemoryBindFlags() )
     {}
 
+    SparseImageMemoryBind(const VkSparseImageMemoryBind& other ) 
+      : m_sparseImageMemoryBind(other) 
+    {}
+
     SparseImageMemoryBind( ImageSubresource subresource, Offset3D offset, Extent3D extent, DeviceMemory memory, DeviceSize memoryOffset, SparseMemoryBindFlags flags)
     {
       m_sparseImageMemoryBind.subresource = static_cast<VkImageSubresource>( subresource );
@@ -8941,6 +9647,11 @@ namespace vk
       m_sparseImageMemoryBind.flags = static_cast<VkSparseMemoryBindFlags>( flags );
     }
 
+    SparseImageMemoryBind& operator=(const VkSparseImageMemoryBind& arg)
+    {
+        m_sparseImageMemoryBind = arg ; 
+        return *this;
+    }
     const ImageSubresource& subresource() const
     {
       return reinterpret_cast<const ImageSubresource&>( m_sparseImageMemoryBind.subresource );
@@ -9023,6 +9734,10 @@ namespace vk
       : SparseBufferMemoryBindInfo( Buffer(), 0, nullptr )
     {}
 
+    SparseBufferMemoryBindInfo(const VkSparseBufferMemoryBindInfo& other ) 
+      : m_sparseBufferMemoryBindInfo(other) 
+    {}
+
     SparseBufferMemoryBindInfo( Buffer buffer, uint32_t bindCount, const SparseMemoryBind* pBinds)
     {
       m_sparseBufferMemoryBindInfo.buffer = buffer;
@@ -9030,6 +9745,11 @@ namespace vk
       m_sparseBufferMemoryBindInfo.pBinds = reinterpret_cast<const VkSparseMemoryBind*>( pBinds );
     }
 
+    SparseBufferMemoryBindInfo& operator=(const VkSparseBufferMemoryBindInfo& arg)
+    {
+        m_sparseBufferMemoryBindInfo = arg ; 
+        return *this;
+    }
     const Buffer& buffer() const
     {
       return m_sparseBufferMemoryBindInfo.buffer;
@@ -9079,6 +9799,10 @@ namespace vk
       : SparseImageOpaqueMemoryBindInfo( Image(), 0, nullptr )
     {}
 
+    SparseImageOpaqueMemoryBindInfo(const VkSparseImageOpaqueMemoryBindInfo& other ) 
+      : m_sparseImageOpaqueMemoryBindInfo(other) 
+    {}
+
     SparseImageOpaqueMemoryBindInfo( Image image, uint32_t bindCount, const SparseMemoryBind* pBinds)
     {
       m_sparseImageOpaqueMemoryBindInfo.image = image;
@@ -9086,6 +9810,11 @@ namespace vk
       m_sparseImageOpaqueMemoryBindInfo.pBinds = reinterpret_cast<const VkSparseMemoryBind*>( pBinds );
     }
 
+    SparseImageOpaqueMemoryBindInfo& operator=(const VkSparseImageOpaqueMemoryBindInfo& arg)
+    {
+        m_sparseImageOpaqueMemoryBindInfo = arg ; 
+        return *this;
+    }
     const Image& image() const
     {
       return m_sparseImageOpaqueMemoryBindInfo.image;
@@ -9135,6 +9864,10 @@ namespace vk
       : SparseImageMemoryBindInfo( Image(), 0, nullptr )
     {}
 
+    SparseImageMemoryBindInfo(const VkSparseImageMemoryBindInfo& other ) 
+      : m_sparseImageMemoryBindInfo(other) 
+    {}
+
     SparseImageMemoryBindInfo( Image image, uint32_t bindCount, const SparseImageMemoryBind* pBinds)
     {
       m_sparseImageMemoryBindInfo.image = image;
@@ -9142,6 +9875,11 @@ namespace vk
       m_sparseImageMemoryBindInfo.pBinds = reinterpret_cast<const VkSparseImageMemoryBind*>( pBinds );
     }
 
+    SparseImageMemoryBindInfo& operator=(const VkSparseImageMemoryBindInfo& arg)
+    {
+        m_sparseImageMemoryBindInfo = arg ; 
+        return *this;
+    }
     const Image& image() const
     {
       return m_sparseImageMemoryBindInfo.image;
@@ -9191,6 +9929,10 @@ namespace vk
       : BindSparseInfo( 0, nullptr, 0, nullptr, 0, nullptr, 0, nullptr, 0, nullptr )
     {}
 
+    BindSparseInfo(const VkBindSparseInfo& other ) 
+      : m_bindSparseInfo(other) 
+    {}
+
     BindSparseInfo( uint32_t waitSemaphoreCount, const Semaphore* pWaitSemaphores, uint32_t bufferBindCount, const SparseBufferMemoryBindInfo* pBufferBinds, uint32_t imageOpaqueBindCount, const SparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds, uint32_t imageBindCount, const SparseImageMemoryBindInfo* pImageBinds, uint32_t signalSemaphoreCount, const Semaphore* pSignalSemaphores)
     {
       m_bindSparseInfo.sType = VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
@@ -9207,6 +9949,11 @@ namespace vk
       m_bindSparseInfo.pSignalSemaphores = pSignalSemaphores;
     }
 
+    BindSparseInfo& operator=(const VkBindSparseInfo& arg)
+    {
+        m_bindSparseInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_bindSparseInfo.sType );
@@ -9383,6 +10130,10 @@ namespace vk
       : SubmitInfo( 0, nullptr, nullptr, 0, nullptr, 0, nullptr )
     {}
 
+    SubmitInfo(const VkSubmitInfo& other ) 
+      : m_submitInfo(other) 
+    {}
+
     SubmitInfo( uint32_t waitSemaphoreCount, const Semaphore* pWaitSemaphores, const PipelineStageFlags* pWaitDstStageMask, uint32_t commandBufferCount, const CommandBuffer* pCommandBuffers, uint32_t signalSemaphoreCount, const Semaphore* pSignalSemaphores)
     {
       m_submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -9396,6 +10147,11 @@ namespace vk
       m_submitInfo.pSignalSemaphores = pSignalSemaphores;
     }
 
+    SubmitInfo& operator=(const VkSubmitInfo& arg)
+    {
+        m_submitInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_submitInfo.sType );
@@ -9524,6 +10280,10 @@ namespace vk
       : CommandPoolCreateInfo( CommandPoolCreateFlags(), 0 )
     {}
 
+    CommandPoolCreateInfo(const VkCommandPoolCreateInfo& other ) 
+      : m_commandPoolCreateInfo(other) 
+    {}
+
     CommandPoolCreateInfo( CommandPoolCreateFlags flags, uint32_t queueFamilyIndex)
     {
       m_commandPoolCreateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
@@ -9532,6 +10292,11 @@ namespace vk
       m_commandPoolCreateInfo.queueFamilyIndex = queueFamilyIndex;
     }
 
+    CommandPoolCreateInfo& operator=(const VkCommandPoolCreateInfo& arg)
+    {
+        m_commandPoolCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_commandPoolCreateInfo.sType );
@@ -9671,6 +10436,10 @@ namespace vk
       : ImageCreateInfo( ImageCreateFlags(), ImageType::e1D, Format::eUndefined, Extent3D(), 0, 0, SampleCountFlagBits::e1, ImageTiling::eOptimal, ImageUsageFlags(), SharingMode::eExclusive, 0, nullptr, ImageLayout::eUndefined )
     {}
 
+    ImageCreateInfo(const VkImageCreateInfo& other ) 
+      : m_imageCreateInfo(other) 
+    {}
+
     ImageCreateInfo( ImageCreateFlags flags, ImageType imageType, Format format, Extent3D extent, uint32_t mipLevels, uint32_t arrayLayers, SampleCountFlagBits samples, ImageTiling tiling, ImageUsageFlags usage, SharingMode sharingMode, uint32_t queueFamilyIndexCount, const uint32_t* pQueueFamilyIndices, ImageLayout initialLayout)
     {
       m_imageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
@@ -9690,6 +10459,11 @@ namespace vk
       m_imageCreateInfo.initialLayout = static_cast<VkImageLayout>( initialLayout );
     }
 
+    ImageCreateInfo& operator=(const VkImageCreateInfo& arg)
+    {
+        m_imageCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_imageCreateInfo.sType );
@@ -9871,6 +10645,10 @@ namespace vk
       : PipelineMultisampleStateCreateInfo( 0, SampleCountFlagBits::e1, 0, 0, nullptr, 0, 0 )
     {}
 
+    PipelineMultisampleStateCreateInfo(const VkPipelineMultisampleStateCreateInfo& other ) 
+      : m_pipelineMultisampleStateCreateInfo(other) 
+    {}
+
     PipelineMultisampleStateCreateInfo( PipelineMultisampleStateCreateFlags flags, SampleCountFlagBits rasterizationSamples, Bool32 sampleShadingEnable, float minSampleShading, const SampleMask* pSampleMask, Bool32 alphaToCoverageEnable, Bool32 alphaToOneEnable)
     {
       m_pipelineMultisampleStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
@@ -9884,6 +10662,11 @@ namespace vk
       m_pipelineMultisampleStateCreateInfo.alphaToOneEnable = alphaToOneEnable;
     }
 
+    PipelineMultisampleStateCreateInfo& operator=(const VkPipelineMultisampleStateCreateInfo& arg)
+    {
+        m_pipelineMultisampleStateCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_pipelineMultisampleStateCreateInfo.sType );
@@ -9999,6 +10782,10 @@ namespace vk
       : GraphicsPipelineCreateInfo( PipelineCreateFlags(), 0, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, PipelineLayout(), RenderPass(), 0, Pipeline(), 0 )
     {}
 
+    GraphicsPipelineCreateInfo(const VkGraphicsPipelineCreateInfo& other ) 
+      : m_graphicsPipelineCreateInfo(other) 
+    {}
+
     GraphicsPipelineCreateInfo( PipelineCreateFlags flags, uint32_t stageCount, const PipelineShaderStageCreateInfo* pStages, const PipelineVertexInputStateCreateInfo* pVertexInputState, const PipelineInputAssemblyStateCreateInfo* pInputAssemblyState, const PipelineTessellationStateCreateInfo* pTessellationState, const PipelineViewportStateCreateInfo* pViewportState, const PipelineRasterizationStateCreateInfo* pRasterizationState, const PipelineMultisampleStateCreateInfo* pMultisampleState, const PipelineDepthStencilStateCreateInfo* pDepthStencilState, const PipelineColorBlendStateCreateInfo* pColorBlendState, const PipelineDynamicStateCreateInfo* pDynamicState, PipelineLayout layout, RenderPass renderPass, uint32_t subpass, Pipeline basePipelineHandle, int32_t basePipelineIndex)
     {
       m_graphicsPipelineCreateInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -10022,6 +10809,11 @@ namespace vk
       m_graphicsPipelineCreateInfo.basePipelineIndex = basePipelineIndex;
     }
 
+    GraphicsPipelineCreateInfo& operator=(const VkGraphicsPipelineCreateInfo& arg)
+    {
+        m_graphicsPipelineCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_graphicsPipelineCreateInfo.sType );
@@ -10858,6 +11650,10 @@ namespace vk
       : AttachmentDescription( AttachmentDescriptionFlags(), Format::eUndefined, SampleCountFlagBits::e1, AttachmentLoadOp::eLoad, AttachmentStoreOp::eStore, AttachmentLoadOp::eLoad, AttachmentStoreOp::eStore, ImageLayout::eUndefined, ImageLayout::eUndefined )
     {}
 
+    AttachmentDescription(const VkAttachmentDescription& other ) 
+      : m_attachmentDescription(other) 
+    {}
+
     AttachmentDescription( AttachmentDescriptionFlags flags, Format format, SampleCountFlagBits samples, AttachmentLoadOp loadOp, AttachmentStoreOp storeOp, AttachmentLoadOp stencilLoadOp, AttachmentStoreOp stencilStoreOp, ImageLayout initialLayout, ImageLayout finalLayout)
     {
       m_attachmentDescription.flags = static_cast<VkAttachmentDescriptionFlags>( flags );
@@ -10871,6 +11667,11 @@ namespace vk
       m_attachmentDescription.finalLayout = static_cast<VkImageLayout>( finalLayout );
     }
 
+    AttachmentDescription& operator=(const VkAttachmentDescription& arg)
+    {
+        m_attachmentDescription = arg ; 
+        return *this;
+    }
     const AttachmentDescriptionFlags& flags() const
     {
       return reinterpret_cast<const AttachmentDescriptionFlags&>( m_attachmentDescription.flags );
@@ -11012,6 +11813,10 @@ namespace vk
       : DescriptorPoolCreateInfo( DescriptorPoolCreateFlags(), 0, 0, nullptr )
     {}
 
+    DescriptorPoolCreateInfo(const VkDescriptorPoolCreateInfo& other ) 
+      : m_descriptorPoolCreateInfo(other) 
+    {}
+
     DescriptorPoolCreateInfo( DescriptorPoolCreateFlags flags, uint32_t maxSets, uint32_t poolSizeCount, const DescriptorPoolSize* pPoolSizes)
     {
       m_descriptorPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
@@ -11022,6 +11827,11 @@ namespace vk
       m_descriptorPoolCreateInfo.pPoolSizes = reinterpret_cast<const VkDescriptorPoolSize*>( pPoolSizes );
     }
 
+    DescriptorPoolCreateInfo& operator=(const VkDescriptorPoolCreateInfo& arg)
+    {
+        m_descriptorPoolCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_descriptorPoolCreateInfo.sType );
@@ -11116,6 +11926,10 @@ namespace vk
       : SubpassDependency( 0, 0, PipelineStageFlags(), PipelineStageFlags(), AccessFlags(), AccessFlags(), DependencyFlags() )
     {}
 
+    SubpassDependency(const VkSubpassDependency& other ) 
+      : m_subpassDependency(other) 
+    {}
+
     SubpassDependency( uint32_t srcSubpass, uint32_t dstSubpass, PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, AccessFlags srcAccessMask, AccessFlags dstAccessMask, DependencyFlags dependencyFlags)
     {
       m_subpassDependency.srcSubpass = srcSubpass;
@@ -11127,6 +11941,11 @@ namespace vk
       m_subpassDependency.dependencyFlags = static_cast<VkDependencyFlags>( dependencyFlags );
     }
 
+    SubpassDependency& operator=(const VkSubpassDependency& arg)
+    {
+        m_subpassDependency = arg ; 
+        return *this;
+    }
     const uint32_t& srcSubpass() const
     {
       return m_subpassDependency.srcSubpass;
@@ -11220,6 +12039,10 @@ namespace vk
       : RenderPassCreateInfo( 0, 0, nullptr, 0, nullptr, 0, nullptr )
     {}
 
+    RenderPassCreateInfo(const VkRenderPassCreateInfo& other ) 
+      : m_renderPassCreateInfo(other) 
+    {}
+
     RenderPassCreateInfo( RenderPassCreateFlags flags, uint32_t attachmentCount, const AttachmentDescription* pAttachments, uint32_t subpassCount, const SubpassDescription* pSubpasses, uint32_t dependencyCount, const SubpassDependency* pDependencies)
     {
       m_renderPassCreateInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
@@ -11233,6 +12056,11 @@ namespace vk
       m_renderPassCreateInfo.pDependencies = reinterpret_cast<const VkSubpassDependency*>( pDependencies );
     }
 
+    RenderPassCreateInfo& operator=(const VkRenderPassCreateInfo& arg)
+    {
+        m_renderPassCreateInfo = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_renderPassCreateInfo.sType );
@@ -11361,12 +12189,21 @@ namespace vk
       : SurfaceFormatKHR( Format::eUndefined, ColorSpaceKHR::eVkColorspaceSrgbNonlinearKhr )
     {}
 
+    SurfaceFormatKHR(const VkSurfaceFormatKHR& other ) 
+      : m_surfaceFormatKHR(other) 
+    {}
+
     SurfaceFormatKHR( Format format, ColorSpaceKHR colorSpace)
     {
       m_surfaceFormatKHR.format = static_cast<VkFormat>( format );
       m_surfaceFormatKHR.colorSpace = static_cast<VkColorSpaceKHR>( colorSpace );
     }
 
+    SurfaceFormatKHR& operator=(const VkSurfaceFormatKHR& arg)
+    {
+        m_surfaceFormatKHR = arg ; 
+        return *this;
+    }
     const Format& format() const
     {
       return reinterpret_cast<const Format&>( m_surfaceFormatKHR.format );
@@ -11440,6 +12277,10 @@ namespace vk
       : SurfaceCapabilitiesKHR( 0, 0, Extent2D(), Extent2D(), Extent2D(), 0, SurfaceTransformFlagsKHR(), SurfaceTransformFlagBitsKHR::eIdentity, CompositeAlphaFlagsKHR(), ImageUsageFlags() )
     {}
 
+    SurfaceCapabilitiesKHR(const VkSurfaceCapabilitiesKHR& other ) 
+      : m_surfaceCapabilitiesKHR(other) 
+    {}
+
     SurfaceCapabilitiesKHR( uint32_t minImageCount, uint32_t maxImageCount, Extent2D currentExtent, Extent2D minImageExtent, Extent2D maxImageExtent, uint32_t maxImageArrayLayers, SurfaceTransformFlagsKHR supportedTransforms, SurfaceTransformFlagBitsKHR currentTransform, CompositeAlphaFlagsKHR supportedCompositeAlpha, ImageUsageFlags supportedUsageFlags)
     {
       m_surfaceCapabilitiesKHR.minImageCount = minImageCount;
@@ -11454,6 +12295,11 @@ namespace vk
       m_surfaceCapabilitiesKHR.supportedUsageFlags = static_cast<VkImageUsageFlags>( supportedUsageFlags );
     }
 
+    SurfaceCapabilitiesKHR& operator=(const VkSurfaceCapabilitiesKHR& arg)
+    {
+        m_surfaceCapabilitiesKHR = arg ; 
+        return *this;
+    }
     const uint32_t& minImageCount() const
     {
       return m_surfaceCapabilitiesKHR.minImageCount;
@@ -11580,6 +12426,10 @@ namespace vk
       : SwapchainCreateInfoKHR( 0, SurfaceKHR(), 0, Format::eUndefined, ColorSpaceKHR::eVkColorspaceSrgbNonlinearKhr, Extent2D(), 0, ImageUsageFlags(), SharingMode::eExclusive, 0, nullptr, SurfaceTransformFlagBitsKHR::eIdentity, CompositeAlphaFlagBitsKHR::eOpaque, PresentModeKHR::eVkPresentModeImmediateKhr, 0, SwapchainKHR() )
     {}
 
+    SwapchainCreateInfoKHR(const VkSwapchainCreateInfoKHR& other ) 
+      : m_swapchainCreateInfoKHR(other) 
+    {}
+
     SwapchainCreateInfoKHR( SwapchainCreateFlagsKHR flags, SurfaceKHR surface, uint32_t minImageCount, Format imageFormat, ColorSpaceKHR imageColorSpace, Extent2D imageExtent, uint32_t imageArrayLayers, ImageUsageFlags imageUsage, SharingMode imageSharingMode, uint32_t queueFamilyIndexCount, const uint32_t* pQueueFamilyIndices, SurfaceTransformFlagBitsKHR preTransform, CompositeAlphaFlagBitsKHR compositeAlpha, PresentModeKHR presentMode, Bool32 clipped, SwapchainKHR oldSwapchain)
     {
       m_swapchainCreateInfoKHR.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
@@ -11602,6 +12452,11 @@ namespace vk
       m_swapchainCreateInfoKHR.oldSwapchain = oldSwapchain;
     }
 
+    SwapchainCreateInfoKHR& operator=(const VkSwapchainCreateInfoKHR& arg)
+    {
+        m_swapchainCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_swapchainCreateInfoKHR.sType );
@@ -11828,6 +12683,10 @@ namespace vk
   class DebugReportCallbackCreateInfoEXT
   {
   public:
+    DebugReportCallbackCreateInfoEXT(const VkDebugReportCallbackCreateInfoEXT& other ) 
+      : m_debugReportCallbackCreateInfoEXT(other) 
+    {}
+
     DebugReportCallbackCreateInfoEXT( DebugReportFlagsEXT flags, PFN_vkDebugReportCallbackEXT pfnCallback, void* pUserData)
     {
       m_debugReportCallbackCreateInfoEXT.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
@@ -11837,6 +12696,11 @@ namespace vk
       m_debugReportCallbackCreateInfoEXT.pUserData = pUserData;
     }
 
+    DebugReportCallbackCreateInfoEXT& operator=(const VkDebugReportCallbackCreateInfoEXT& arg)
+    {
+        m_debugReportCallbackCreateInfoEXT = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_debugReportCallbackCreateInfoEXT.sType );
@@ -13477,12 +14341,21 @@ namespace vk
       : DisplayPlanePropertiesKHR( DisplayKHR(), 0 )
     {}
 
+    DisplayPlanePropertiesKHR(const VkDisplayPlanePropertiesKHR& other ) 
+      : m_displayPlanePropertiesKHR(other) 
+    {}
+
     DisplayPlanePropertiesKHR( DisplayKHR currentDisplay, uint32_t currentStackIndex)
     {
       m_displayPlanePropertiesKHR.currentDisplay = currentDisplay;
       m_displayPlanePropertiesKHR.currentStackIndex = currentStackIndex;
     }
 
+    DisplayPlanePropertiesKHR& operator=(const VkDisplayPlanePropertiesKHR& arg)
+    {
+        m_displayPlanePropertiesKHR = arg ; 
+        return *this;
+    }
     const DisplayKHR& currentDisplay() const
     {
       return m_displayPlanePropertiesKHR.currentDisplay;
@@ -13521,12 +14394,21 @@ namespace vk
       : DisplayModeParametersKHR( Extent2D(), 0 )
     {}
 
+    DisplayModeParametersKHR(const VkDisplayModeParametersKHR& other ) 
+      : m_displayModeParametersKHR(other) 
+    {}
+
     DisplayModeParametersKHR( Extent2D visibleRegion, uint32_t refreshRate)
     {
       m_displayModeParametersKHR.visibleRegion = static_cast<VkExtent2D>( visibleRegion );
       m_displayModeParametersKHR.refreshRate = refreshRate;
     }
 
+    DisplayModeParametersKHR& operator=(const VkDisplayModeParametersKHR& arg)
+    {
+        m_displayModeParametersKHR = arg ; 
+        return *this;
+    }
     const Extent2D& visibleRegion() const
     {
       return reinterpret_cast<const Extent2D&>( m_displayModeParametersKHR.visibleRegion );
@@ -13565,12 +14447,21 @@ namespace vk
       : DisplayModePropertiesKHR( DisplayModeKHR(), DisplayModeParametersKHR() )
     {}
 
+    DisplayModePropertiesKHR(const VkDisplayModePropertiesKHR& other ) 
+      : m_displayModePropertiesKHR(other) 
+    {}
+
     DisplayModePropertiesKHR( DisplayModeKHR displayMode, DisplayModeParametersKHR parameters)
     {
       m_displayModePropertiesKHR.displayMode = displayMode;
       m_displayModePropertiesKHR.parameters = static_cast<VkDisplayModeParametersKHR>( parameters );
     }
 
+    DisplayModePropertiesKHR& operator=(const VkDisplayModePropertiesKHR& arg)
+    {
+        m_displayModePropertiesKHR = arg ; 
+        return *this;
+    }
     const DisplayModeKHR& displayMode() const
     {
       return m_displayModePropertiesKHR.displayMode;
@@ -13609,6 +14500,10 @@ namespace vk
       : DisplayModeCreateInfoKHR( 0, DisplayModeParametersKHR() )
     {}
 
+    DisplayModeCreateInfoKHR(const VkDisplayModeCreateInfoKHR& other ) 
+      : m_displayModeCreateInfoKHR(other) 
+    {}
+
     DisplayModeCreateInfoKHR( DisplayModeCreateFlagsKHR flags, DisplayModeParametersKHR parameters)
     {
       m_displayModeCreateInfoKHR.sType = VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR;
@@ -13617,6 +14512,11 @@ namespace vk
       m_displayModeCreateInfoKHR.parameters = static_cast<VkDisplayModeParametersKHR>( parameters );
     }
 
+    DisplayModeCreateInfoKHR& operator=(const VkDisplayModeCreateInfoKHR& arg)
+    {
+        m_displayModeCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_displayModeCreateInfoKHR.sType );
@@ -13692,6 +14592,10 @@ namespace vk
       : DisplayPlaneCapabilitiesKHR( DisplayPlaneAlphaFlagsKHR(), Offset2D(), Offset2D(), Extent2D(), Extent2D(), Offset2D(), Offset2D(), Extent2D(), Extent2D() )
     {}
 
+    DisplayPlaneCapabilitiesKHR(const VkDisplayPlaneCapabilitiesKHR& other ) 
+      : m_displayPlaneCapabilitiesKHR(other) 
+    {}
+
     DisplayPlaneCapabilitiesKHR( DisplayPlaneAlphaFlagsKHR supportedAlpha, Offset2D minSrcPosition, Offset2D maxSrcPosition, Extent2D minSrcExtent, Extent2D maxSrcExtent, Offset2D minDstPosition, Offset2D maxDstPosition, Extent2D minDstExtent, Extent2D maxDstExtent)
     {
       m_displayPlaneCapabilitiesKHR.supportedAlpha = static_cast<VkDisplayPlaneAlphaFlagsKHR>( supportedAlpha );
@@ -13705,6 +14609,11 @@ namespace vk
       m_displayPlaneCapabilitiesKHR.maxDstExtent = static_cast<VkExtent2D>( maxDstExtent );
     }
 
+    DisplayPlaneCapabilitiesKHR& operator=(const VkDisplayPlaneCapabilitiesKHR& arg)
+    {
+        m_displayPlaneCapabilitiesKHR = arg ; 
+        return *this;
+    }
     const DisplayPlaneAlphaFlagsKHR& supportedAlpha() const
     {
       return reinterpret_cast<const DisplayPlaneAlphaFlagsKHR&>( m_displayPlaneCapabilitiesKHR.supportedAlpha );
@@ -13820,6 +14729,10 @@ namespace vk
       : DisplayPropertiesKHR( DisplayKHR(), nullptr, Extent2D(), Extent2D(), SurfaceTransformFlagsKHR(), 0, 0 )
     {}
 
+    DisplayPropertiesKHR(const VkDisplayPropertiesKHR& other ) 
+      : m_displayPropertiesKHR(other) 
+    {}
+
     DisplayPropertiesKHR( DisplayKHR display, const char* displayName, Extent2D physicalDimensions, Extent2D physicalResolution, SurfaceTransformFlagsKHR supportedTransforms, Bool32 planeReorderPossible, Bool32 persistentContent)
     {
       m_displayPropertiesKHR.display = display;
@@ -13831,6 +14744,11 @@ namespace vk
       m_displayPropertiesKHR.persistentContent = persistentContent;
     }
 
+    DisplayPropertiesKHR& operator=(const VkDisplayPropertiesKHR& arg)
+    {
+        m_displayPropertiesKHR = arg ; 
+        return *this;
+    }
     const DisplayKHR& display() const
     {
       return m_displayPropertiesKHR.display;
@@ -13924,6 +14842,10 @@ namespace vk
       : DisplaySurfaceCreateInfoKHR( 0, DisplayModeKHR(), 0, 0, SurfaceTransformFlagBitsKHR::eIdentity, 0, DisplayPlaneAlphaFlagBitsKHR::eOpaque, Extent2D() )
     {}
 
+    DisplaySurfaceCreateInfoKHR(const VkDisplaySurfaceCreateInfoKHR& other ) 
+      : m_displaySurfaceCreateInfoKHR(other) 
+    {}
+
     DisplaySurfaceCreateInfoKHR( DisplaySurfaceCreateFlagsKHR flags, DisplayModeKHR displayMode, uint32_t planeIndex, uint32_t planeStackIndex, SurfaceTransformFlagBitsKHR transform, float globalAlpha, DisplayPlaneAlphaFlagBitsKHR alphaMode, Extent2D imageExtent)
     {
       m_displaySurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
@@ -13938,6 +14860,11 @@ namespace vk
       m_displaySurfaceCreateInfoKHR.imageExtent = static_cast<VkExtent2D>( imageExtent );
     }
 
+    DisplaySurfaceCreateInfoKHR& operator=(const VkDisplaySurfaceCreateInfoKHR& arg)
+    {
+        m_displaySurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_displaySurfaceCreateInfoKHR.sType );
@@ -14176,6 +15103,10 @@ namespace vk
       : DisplayPresentInfoKHR( Rect2D(), Rect2D(), 0 )
     {}
 
+    DisplayPresentInfoKHR(const VkDisplayPresentInfoKHR& other ) 
+      : m_displayPresentInfoKHR(other) 
+    {}
+
     DisplayPresentInfoKHR( Rect2D srcRect, Rect2D dstRect, Bool32 persistent)
     {
       m_displayPresentInfoKHR.sType = VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR;
@@ -14185,6 +15116,11 @@ namespace vk
       m_displayPresentInfoKHR.persistent = persistent;
     }
 
+    DisplayPresentInfoKHR& operator=(const VkDisplayPresentInfoKHR& arg)
+    {
+        m_displayPresentInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_displayPresentInfoKHR.sType );
@@ -14272,6 +15208,10 @@ namespace vk
       : XlibSurfaceCreateInfoKHR( 0, nullptr, 0 )
     {}
 
+    XlibSurfaceCreateInfoKHR(const VkXlibSurfaceCreateInfoKHR& other ) 
+      : m_xlibSurfaceCreateInfoKHR(other) 
+    {}
+
     XlibSurfaceCreateInfoKHR( XlibSurfaceCreateFlagsKHR flags, Display* dpy, Window window)
     {
       m_xlibSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
@@ -14281,6 +15221,11 @@ namespace vk
       m_xlibSurfaceCreateInfoKHR.window = window;
     }
 
+    XlibSurfaceCreateInfoKHR& operator=(const VkXlibSurfaceCreateInfoKHR& arg)
+    {
+        m_xlibSurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_xlibSurfaceCreateInfoKHR.sType );
@@ -14381,6 +15326,10 @@ namespace vk
       : XcbSurfaceCreateInfoKHR( 0, nullptr, 0 )
     {}
 
+    XcbSurfaceCreateInfoKHR(const VkXcbSurfaceCreateInfoKHR& other ) 
+      : m_xcbSurfaceCreateInfoKHR(other) 
+    {}
+
     XcbSurfaceCreateInfoKHR( XcbSurfaceCreateFlagsKHR flags, xcb_connection_t* connection, xcb_window_t window)
     {
       m_xcbSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR;
@@ -14390,6 +15339,11 @@ namespace vk
       m_xcbSurfaceCreateInfoKHR.window = window;
     }
 
+    XcbSurfaceCreateInfoKHR& operator=(const VkXcbSurfaceCreateInfoKHR& arg)
+    {
+        m_xcbSurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_xcbSurfaceCreateInfoKHR.sType );
@@ -14490,6 +15444,10 @@ namespace vk
       : WaylandSurfaceCreateInfoKHR( 0, nullptr, nullptr )
     {}
 
+    WaylandSurfaceCreateInfoKHR(const VkWaylandSurfaceCreateInfoKHR& other ) 
+      : m_waylandSurfaceCreateInfoKHR(other) 
+    {}
+
     WaylandSurfaceCreateInfoKHR( WaylandSurfaceCreateFlagsKHR flags, struct wl_display* display, struct wl_surface* surface)
     {
       m_waylandSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR;
@@ -14499,6 +15457,11 @@ namespace vk
       m_waylandSurfaceCreateInfoKHR.surface = surface;
     }
 
+    WaylandSurfaceCreateInfoKHR& operator=(const VkWaylandSurfaceCreateInfoKHR& arg)
+    {
+        m_waylandSurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_waylandSurfaceCreateInfoKHR.sType );
@@ -14599,6 +15562,10 @@ namespace vk
       : MirSurfaceCreateInfoKHR( 0, nullptr, nullptr )
     {}
 
+    MirSurfaceCreateInfoKHR(const VkMirSurfaceCreateInfoKHR& other ) 
+      : m_mirSurfaceCreateInfoKHR(other) 
+    {}
+
     MirSurfaceCreateInfoKHR( MirSurfaceCreateFlagsKHR flags, MirConnection* connection, MirSurface* mirSurface)
     {
       m_mirSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR;
@@ -14608,6 +15575,11 @@ namespace vk
       m_mirSurfaceCreateInfoKHR.mirSurface = mirSurface;
     }
 
+    MirSurfaceCreateInfoKHR& operator=(const VkMirSurfaceCreateInfoKHR& arg)
+    {
+        m_mirSurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_mirSurfaceCreateInfoKHR.sType );
@@ -14708,6 +15680,10 @@ namespace vk
       : AndroidSurfaceCreateInfoKHR( 0, nullptr )
     {}
 
+    AndroidSurfaceCreateInfoKHR(const VkAndroidSurfaceCreateInfoKHR& other ) 
+      : m_androidSurfaceCreateInfoKHR(other) 
+    {}
+
     AndroidSurfaceCreateInfoKHR( AndroidSurfaceCreateFlagsKHR flags, ANativeWindow* window)
     {
       m_androidSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
@@ -14716,6 +15692,11 @@ namespace vk
       m_androidSurfaceCreateInfoKHR.window = window;
     }
 
+    AndroidSurfaceCreateInfoKHR& operator=(const VkAndroidSurfaceCreateInfoKHR& arg)
+    {
+        m_androidSurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_androidSurfaceCreateInfoKHR.sType );
@@ -14793,6 +15774,10 @@ namespace vk
       : Win32SurfaceCreateInfoKHR( 0, 0, 0 )
     {}
 
+    Win32SurfaceCreateInfoKHR(const VkWin32SurfaceCreateInfoKHR& other ) 
+      : m_win32SurfaceCreateInfoKHR(other) 
+    {}
+
     Win32SurfaceCreateInfoKHR( Win32SurfaceCreateFlagsKHR flags, HINSTANCE hinstance, HWND hwnd)
     {
       m_win32SurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
@@ -14802,6 +15787,11 @@ namespace vk
       m_win32SurfaceCreateInfoKHR.hwnd = hwnd;
     }
 
+    Win32SurfaceCreateInfoKHR& operator=(const VkWin32SurfaceCreateInfoKHR& arg)
+    {
+        m_win32SurfaceCreateInfoKHR = arg ; 
+        return *this;
+    }
     const StructureType& sType() const
     {
       return reinterpret_cast<const StructureType&>( m_win32SurfaceCreateInfoKHR.sType );
