@@ -1834,7 +1834,7 @@ int main( int argc, char **argv )
 {
   tinyxml2::XMLDocument doc;
 
-  tinyxml2::XMLError error = doc.LoadFile("vk.xml" );
+  tinyxml2::XMLError error = doc.LoadFile(argv[1]);
   if (error != tinyxml2::XML_SUCCESS)
   {
     std::cout << "VkGenerate: failed to load file " << argv[1] << " . Error code: " << error << std::endl;
