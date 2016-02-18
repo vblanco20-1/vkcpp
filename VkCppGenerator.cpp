@@ -1109,6 +1109,17 @@ void writeMemberData(std::ofstream & ofs, MemberData const& memberData, std::set
     ofs << memberData.name;
   }
 }
+void writeAssigmentOperator(std::ofstream &ofs, std::string const& name, std::string const& memberName)
+{
+
+	ofs <<"    "<< name << "& operator=(const Vk" << name << "& arg)" << std::endl
+		<<"    {" << std::endl
+		<<"        " <<memberName << " = arg ; " << std::endl
+		<<"        return *this;" << std::endl
+		<<"    }" <<std::endl;
+}
+
+
 
 void writeStructConstructor( std::ofstream & ofs, std::string const& name, std::string const& memberName, StructData const& structData, std::set<std::string> const& vkTypes, std::map<std::string,std::string> const& defaultValues )
 {
@@ -1160,6 +1171,13 @@ void writeStructConstructor( std::ofstream & ofs, std::string const& name, std::
         << "    {}" << std::endl
         << std::endl;
   }
+  //the copy constructor
+
+  ofs << "    " << name << "(const Vk" << name << "& other ) " << std::endl
+	  << "      : " << memberName << "(other) "<<std::endl
+	  << "    {}" << std::endl
+	  << std::endl;
+
 
   // the constructor with all the elements as arguments
   ofs << "    " << name << "( ";
@@ -1647,6 +1665,7 @@ void writeTypeScalar( std::ofstream & ofs, DependencyData const& dependencyData 
   ofs << "  typedef " << *dependencyData.dependencies.begin() << " " << dependencyData.name << ";" << std::endl;
 }
 
+
 void writeTypeStruct( std::ofstream & ofs, DependencyData const& dependencyData, std::set<std::string> const& vkTypes, std::map<std::string,StructData> const& structs, std::map<std::string,std::string> const& defaultValues )
 {
   std::map<std::string,StructData>::const_iterator it = structs.find( dependencyData.name );
@@ -1665,6 +1684,8 @@ void writeTypeStruct( std::ofstream & ofs, DependencyData const& dependencyData,
   if ( !it->second.returnedOnly )
   {
     writeStructConstructor( ofs, dependencyData.name, memberName, it->second, vkTypes, defaultValues );
+
+	writeAssigmentOperator(ofs, dependencyData.name, memberName);
   }
 
   // create the getters and setters
@@ -1813,7 +1834,7 @@ int main( int argc, char **argv )
 {
   tinyxml2::XMLDocument doc;
 
-  tinyxml2::XMLError error = doc.LoadFile( argv[1] );
+  tinyxml2::XMLError error = doc.LoadFile("vk.xml" );
   if (error != tinyxml2::XML_SUCCESS)
   {
     std::cout << "VkGenerate: failed to load file " << argv[1] << " . Error code: " << error << std::endl;
